@@ -3,6 +3,8 @@
 
 #include "interfaces.h"
 #include "Database.h"
+#include <set>
+#include <map>
 
 namespace fb {
 
@@ -10,7 +12,7 @@ class Profile : public IFaceBookletNode {
 public:
   Profile(Database *db, std::string const &name);
 
-  Profile() { }
+  Profile(): db(nullptr), profile_name("") { }
 
   virtual const id_t get_id() const;
 
@@ -32,11 +34,13 @@ private:
 
   Database *db;
 
-  // ensures id set matches to
-  void check_friend_cache();
-
-  std::map<id_t, id_t> ids;
-  std::map<id_t, IFaceBookletNode *> friend_cache;
+  /**
+   * a set-hashtable of ids associated with the profile
+   * the Profile class does not contain pointers to
+   * any other profiles. Instead, it uses a database class to
+   * manage relationships
+   */
+  std::set<id_t> ids;
 };
 
 } // fb

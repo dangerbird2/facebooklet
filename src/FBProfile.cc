@@ -19,15 +19,39 @@ const std::string Profile::describe() const
 
 IFaceBookletNode const *Profile::get_friend(id_t id) const { return nullptr; }
 
-IFaceBookletNode *Profile::get_friend(id_t id) { return nullptr; }
+IFaceBookletNode *Profile::get_friend(id_t id) {
+  auto node = (IFaceBookletNode*) nullptr;
 
-void Profile::add_friend(IFaceBookletNode &fr) { }
+  auto has_friend = bool(ids.count(id) > 0);
 
-void Profile::remove_friend(id_t id) { }
+  if (db && has_friend) {
+    node = db->get_node(id);
+  }
 
-void Profile::check_friend_cache()
-{
-  if (ids.size() > friend_cache.size()) {
+  return node;
+}
+
+void Profile::add_friend(IFaceBookletNode &fr) {
+  auto friend_id = fr.get_id();
+  if (!get_friend(friend_id)) {
+    ids.insert(friend_id);
+  }
+  // call add friend on friend node if this
+  // is not already added
+  if (!fr.get_friend(id)) {
+    fr.add_friend(*this);
+  }
+}
+
+void Profile::remove_friend(id_t id) {
+  auto fr = get_friend(id);
+  if (fr) {
+    auto fr_id = fr->get_id();
+    ids.erase(fr_id);
+
+    if (fr->get_friend(id)) {
+      fr->remove_friend(id);
+    }
   }
 }
 
