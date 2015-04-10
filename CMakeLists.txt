@@ -7,15 +7,13 @@ set(SLS_GENERATE_DOCS TRUE
     CACHE BOOL "generate documentation with doxygen")
 
 set(FACE_SRC
-    src/animal.c
-    src/btree.c
-    src/util.c)
+    src/FaceBooklet.cc
+    src/FBProfile.cc
+    src/Database.cc)
 
 set(FACE_TEST_SRC
     tests/test_run.cc
-    tests/btree_test.cc
-    tests/animal_test.cc
-    tests/game_test.cc)
+    tests/interface_tests.cc)
 
 # find doxygen and generate docs
 find_package(Doxygen)
@@ -34,3 +32,10 @@ include_directories(
     ${CMAKE_SOURCE_DIR}/extern/googletest/include
     ${CMAKE_SOURCE_DIR}/include)
 
+add_library(facebooklet ${FACE_SRC})
+
+add_executable(facebooklet_tests ${FACE_TEST_SRC})
+target_link_libraries(facebooklet_tests
+    facebooklet
+    gtest
+    gtest_main)
