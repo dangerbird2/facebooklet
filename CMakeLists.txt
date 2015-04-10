@@ -27,11 +27,10 @@ if (DOXYGEN_FOUND AND SLS_GENERATE_DOCS)
         COMMENT "Generating API documentation with Doxygen")
 endif(DOXYGEN_FOUND AND SLS_GENERATE_DOCS)
 
-add_subdirectory(extern/gtest)
 add_subdirectory(extern/googlemock)
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/extern/gtest/include
+    ${CMAKE_SOURCE_DIR}/extern/googlemock/include
     ${CMAKE_SOURCE_DIR}/include)
 
 add_library(facebooklet ${FACE_SRC})
