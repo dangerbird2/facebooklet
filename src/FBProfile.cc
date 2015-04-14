@@ -1,20 +1,23 @@
 #include <facebooklet/face.h>
+#include <iostream>
+#include <string>
 #include <sstream>
 
 namespace fb {
 
 using namespace std;
 
-Profile::Profile(Database *db, std::string const &name)
+Profile::Profile(IDatabase *db, std::string const &name)
     : db(db), profile_name(name), id(0) { }
 
 const id_t Profile::get_id() const { return id; }
 
-const std::string Profile::describe() const
+string const Profile::describe() const
 {
   auto buff = stringstream();
   buff << "Profile:" << profile_name << " id:" << id;
-  return buff.str();
+
+  return string(buff.str());
 }
 
 IFaceBookletNode const *Profile::get_friend(id_t id) const { return nullptr; }
@@ -55,6 +58,39 @@ void Profile::remove_friend(id_t id) {
   }
 }
 
-string const &Profile::name() const { return profile_name; }
+string const &Profile::get_name() const { return profile_name; }
 
+Profile::~Profile() { }
+
+void Profile::set_id(id_t id)
+{
+  auto old_id = this->id;
+  this->id = id;
+
+  if (ids.size() > 0) {
+    // reset friend ids
+    for (auto &i: ids) {
+      auto fr = db->get_node(i);
+      fr->remove_friend(old_id);
+      fr->add_friend(*this);
+    }
+  }
+}
+
+NodeData &Profile::get_data()
+{
+  return data;
+}
+
+NodeData const &Profile::get_data() const
+{
+  return data;
+}
+
+void Profile::set_data(NodeData const &data)
+{
+  this->data = data;
+}
+
+Profile::Profile() : db(nullptr), profile_name("") { }
 } // fb

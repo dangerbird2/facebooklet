@@ -7,7 +7,7 @@ class FaceBooklet {
 public:
   FaceBooklet();
 
-  ~FaceBooklet();
+  virtual ~FaceBooklet();
 
   // delete copy constructor
   FaceBooklet(FaceBooklet &) = delete;

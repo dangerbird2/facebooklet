@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "../extern/googletest/include/gtest/gtest.h"
+#include <gtest/gtest.h>
 
 /**
  * @brief: main file for test suite

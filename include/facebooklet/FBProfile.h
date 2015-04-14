@@ -10,29 +10,41 @@ namespace fb {
 
 class Profile : public IFaceBookletNode {
 public:
-  Profile(Database *db, std::string const &name);
 
-  Profile(): db(nullptr), profile_name("") { }
+  Profile(IDatabase *db, std::string const &name);
+
+  Profile();
+
+  virtual ~Profile();
 
   virtual const id_t get_id() const;
 
-  virtual const std::string describe() const;
+  virtual std::string const describe() const;
 
   virtual IFaceBookletNode const *get_friend(id_t id) const;
-
   virtual IFaceBookletNode *get_friend(id_t id);
 
   virtual void add_friend(IFaceBookletNode &fr);
-
   virtual void remove_friend(id_t id);
 
-  virtual std::string const &name() const;
+  virtual void set_id(id_t id);
+
+  virtual std::string const &get_name() const;
+
+
+  virtual NodeData &get_data();
+
+  virtual NodeData const &get_data() const;
+
+  virtual void set_data(NodeData const &data);
 
 private:
   std::string profile_name;
   id_t id;
 
-  Database *db;
+  NodeData data;
+
+  IDatabase *db;
 
   /**
    * a set-hashtable of ids associated with the profile

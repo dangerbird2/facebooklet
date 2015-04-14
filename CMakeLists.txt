@@ -9,11 +9,13 @@ set(SLS_GENERATE_DOCS TRUE
 set(FACE_SRC
     src/FaceBooklet.cc
     src/FBProfile.cc
-    src/Database.cc)
+    src/Database.cc
+    src/NodeData.cc)
 
 set(FACE_TEST_SRC
     tests/test_run.cc
-    tests/interface_tests.cc)
+    tests/profile_test.cc
+    tests/db_tests.cc)
 
 # find doxygen and generate docs
 find_package(Doxygen)
@@ -31,6 +33,7 @@ add_subdirectory(extern/googlemock)
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/extern/googlemock/include
+    ${CMAKE_SOURCE_DIR}/extern/gtest/include
     ${CMAKE_SOURCE_DIR}/include)
 
 add_library(facebooklet ${FACE_SRC})
@@ -39,4 +42,6 @@ add_executable(facebooklet_tests ${FACE_TEST_SRC})
 target_link_libraries(facebooklet_tests
     facebooklet
     gtest
-    gtest_main)
+    gtest_main
+    gmock
+    gmock_main)

@@ -8,6 +8,7 @@ FaceBooklet::~FaceBooklet() { }
 
 void FaceBooklet::run() { }
 
+
 std::ostream &operator<<(std::ostream &os, const IFaceBookletNode &node)
 {
   return os << node.describe();

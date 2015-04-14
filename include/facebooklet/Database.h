@@ -10,19 +10,23 @@
 #include <vector>
 
 namespace fb {
-class Database {
+class Database : public IDatabase {
 public:
   Database();
 
+  virtual ~Database();
+
   Database(Database &db) = delete;
 
-  IFaceBookletNode *get_node(id_t id);
+  virtual IFaceBookletNode *get_node(id_t id);
 
-  void set_node(id_t id, NodeUptr node);
+  virtual IFaceBookletNode *new_node(IFaceBookletNode *node);
 
-  bool has_node(id_t id);
+  virtual IFaceBookletNode *set_node(id_t id, IFaceBookletNode *node);
 
-  void remove_node(id_t id);
+  virtual bool has_node(id_t id);
+
+  virtual void remove_node(id_t id);
 
   std::vector<id_t> ids_with_name(std::string name);
 
