@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <assert.h>
 
 namespace fb {
 
@@ -15,7 +16,7 @@ const id_t Profile::get_id() const { return id; }
 string const Profile::describe() const
 {
   auto buff = stringstream();
-  buff << "Profile:" << profile_name << " id:" << id;
+  buff << "{Profile:" << profile_name << " id:" << id << "}";
 
   return string(buff.str());
 }
@@ -34,15 +35,29 @@ IFaceBookletNode *Profile::get_friend(id_t id) {
   return node;
 }
 
-void Profile::add_friend(IFaceBookletNode &fr) {
-  auto friend_id = fr.get_id();
+void Profile::add_friend(IFaceBookletNode *fr)
+{
+
+  if (!fr) {
+    cerr << "\tfr is nullptr\n";
+    return;
+  }
+  auto friend_id = fr->get_id();
+
+  if (friend_id == id) {
+
+    return;
+  }
+
   if (!get_friend(friend_id)) {
     ids.insert(friend_id);
   }
   // call add friend on friend node if this
   // is not already added
-  if (!fr.get_friend(id)) {
-    fr.add_friend(*this);
+  IFaceBookletNode *fr_fr = fr->get_friend(id);
+  if (fr_fr == nullptr || fr_fr != this) {
+    printf("%lu\n", (size_t) fr_fr);
+    fr->add_friend(this);
   }
 }
 
@@ -72,7 +87,7 @@ void Profile::set_id(id_t id)
     for (auto &i: ids) {
       auto fr = db->get_node(i);
       fr->remove_friend(old_id);
-      fr->add_friend(*this);
+      fr->add_friend(this);
     }
   }
 }

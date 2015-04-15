@@ -6,10 +6,15 @@
 #define ANIMAL_DATABASE_H
 
 #include "interfaces.h"
+#include "FBProfile.h"
 #include <map>
 #include <vector>
 
+
 namespace fb {
+
+class Profile;
+
 class Database : public IDatabase {
 public:
   Database();
@@ -18,20 +23,23 @@ public:
 
   Database(Database &db) = delete;
 
-  virtual IFaceBookletNode *get_node(id_t id);
+  IFaceBookletNode *get_node(id_t id);
 
-  virtual IFaceBookletNode *new_node(IFaceBookletNode *node);
+  IFaceBookletNode *new_node(IFaceBookletNode *node);
 
-  virtual IFaceBookletNode *set_node(id_t id, IFaceBookletNode *node);
+  IFaceBookletNode *set_node(id_t id, IFaceBookletNode *node);
 
-  virtual bool has_node(id_t id);
+  bool has_node(id_t id);
 
-  virtual void remove_node(id_t id);
+  void remove_node(id_t id);
 
   std::vector<id_t> ids_with_name(std::string name);
 
+  Profile *insert_profile(std::string const &name);
+
 private:
   std::map<id_t, NodeUptr> nodes;
+  id_t id_count;
 };
 }
 

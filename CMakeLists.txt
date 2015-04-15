@@ -15,7 +15,7 @@ set(FACE_SRC
 set(FACE_TEST_SRC
     tests/test_run.cc
     tests/profile_test.cc
-    tests/db_tests.cc)
+    tests/db_test.cc)
 
 # find doxygen and generate docs
 find_package(Doxygen)

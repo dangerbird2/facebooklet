@@ -4,27 +4,33 @@
 
 #include <facebooklet/face.h>
 #include <vector>
+#include <memory>
 
 namespace fb {
+
+using namespace std;
 
 /*
  * Database implementation
  */
 
-Database::Database() { }
+Database::Database() : id_count(0) { }
 
-IFaceBookletNode *Database::get_node(id_t id) { return nullptr; }
+IFaceBookletNode *Database::get_node(id_t id)
+{
+  auto node = (IFaceBookletNode *) nullptr;
+
+  if (has_node(id)) {
+    node = nodes[id].get();
+  }
+
+  return node;
+}
 
 IFaceBookletNode *Database::new_node(IFaceBookletNode *node)
 {
-  auto id = 1lu;
-  auto probing = true;
+  auto id = ++id_count;
 
-  // find first unused node_id in database
-  while (probing) {
-    probing = has_node(id);
-    ++id;
-  }
   return set_node(id, node);
 }
 
@@ -49,6 +55,15 @@ void Database::remove_node(id_t id)
     nodes.erase(id);
   }
 }
+
+Profile *Database::insert_profile(std::string const &name)
+{
+  auto profile = new Profile(this, name);
+
+
+  return (Profile *) new_node(profile);
+}
+
 
 std::vector<id_t> Database::ids_with_name(std::string name) { return {}; }
 

@@ -72,7 +72,7 @@ struct IFaceBookletNode {
   /**
    * @brief add a friend to node's friend list
    */
-  virtual void add_friend(IFaceBookletNode &fr) = 0;
+  virtual void add_friend(IFaceBookletNode *fr) = 0;
 
 
   virtual void remove_friend(id_t id) = 0;
@@ -83,6 +83,9 @@ struct IFaceBookletNode {
   friend bool operator==(IFaceBookletNode const &self,
                          IFaceBookletNode const &rhs);
 };
+
+bool operator==(IFaceBookletNode const &self,
+                IFaceBookletNode const &rhs);
 
 /**
  * type aliases for smart pointers utilizing IFaceBookletNode
