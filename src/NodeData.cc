@@ -2,9 +2,9 @@
 // Created by Steven on 4/14/15.
 //
 
-#include "../include/facebooklet/NodeData.h"
+#include "NodeData.h"
 
-#include <facebooklet/face.h>
+#include "face.h"
 
 namespace fb {
 
@@ -13,7 +13,7 @@ namespace fb {
  * NodeData implementation
  */
 
-id_t NodeData::get_time() const
+time_t NodeData::get_time() const
 {
   return time;
 }
@@ -37,14 +37,14 @@ std::vector<NodePost> const &NodeData::get_posts() const
   return posts;
 }
 
-std::string const &NodeData::get_name()
+std::string const &NodeData::get_name() const
 {
   return name;
 }
 
-void NodeData::set_time(id_t time)
+void NodeData::set_time(time_t time)
 {
-  NodeData::time = time;
+  this->time = time;
 }
 
 

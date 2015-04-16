@@ -1,6 +1,4 @@
-#include <facebooklet/face.h>
-#include <iostream>
-#include <string>
+#include "face.h"
 #include <sstream>
 #include <assert.h>
 
@@ -8,28 +6,42 @@ namespace fb {
 
 using namespace std;
 
-Profile::Profile(IDatabase *db, std::string const &name)
-    : db(db), profile_name(name), id(0) { }
+Profile::Profile(IDatabase *db, std::string const &name, time_t time)
+    : db(db), id(0)
+{
+  data = NodeData(name, time);
+}
 
 const id_t Profile::get_id() const { return id; }
 
 string const Profile::describe() const
 {
   auto buff = stringstream();
-  buff << "{Profile:" << profile_name << " id:" << id << "}";
+  buff << "{Profile:" << data.get_name() << " id:" << id << "}";
 
   return string(buff.str());
 }
 
-IFaceBookletNode const *Profile::get_friend(id_t id) const { return nullptr; }
+IFaceBookletNode const *Profile::get_friend(id_t id) const
+{
+  auto node = (IFaceBookletNode *) nullptr;
 
-IFaceBookletNode *Profile::get_friend(id_t id) {
+  // ensures id is in friends, and that its value is true
+
+  if (db && has_friend(id)) {
+    node = db->get_node(id);
+  }
+
+  return node;
+}
+
+IFaceBookletNode *Profile::get_friend(id_t fr_id)
+{
   auto node = (IFaceBookletNode*) nullptr;
 
-  auto has_friend = bool(ids.count(id) > 0);
 
-  if (db && has_friend) {
-    node = db->get_node(id);
+  if (db && has_friend(fr_id)) {
+    node = db->get_node(fr_id);
   }
 
   return node;
@@ -42,38 +54,38 @@ void Profile::add_friend(IFaceBookletNode *fr)
     cerr << "\tfr is nullptr\n";
     return;
   }
+
   auto friend_id = fr->get_id();
 
-  if (friend_id == id) {
-
+  if (friend_id == id || fr == this) {
+    cerr << "\nnode fr == this";
     return;
   }
 
   if (!get_friend(friend_id)) {
-    ids.insert(friend_id);
+    friends[friend_id] = true;
   }
   // call add friend on friend node if this
   // is not already added
   IFaceBookletNode *fr_fr = fr->get_friend(id);
   if (fr_fr == nullptr || fr_fr != this) {
-    printf("%lu\n", (size_t) fr_fr);
     fr->add_friend(this);
   }
 }
 
-void Profile::remove_friend(id_t id) {
+void Profile::remove_friend(id_t fr_id)
+{
   auto fr = get_friend(id);
   if (fr) {
-    auto fr_id = fr->get_id();
-    ids.erase(fr_id);
+    friends.at(id) = false;
 
-    if (fr->get_friend(id)) {
+    if (fr->has_friend(id)) {
       fr->remove_friend(id);
     }
+
+
   }
 }
-
-string const &Profile::get_name() const { return profile_name; }
 
 Profile::~Profile() { }
 
@@ -82,10 +94,10 @@ void Profile::set_id(id_t id)
   auto old_id = this->id;
   this->id = id;
 
-  if (ids.size() > 0) {
+  if (friends.size() > 0) {
     // reset friend ids
-    for (auto &i: ids) {
-      auto fr = db->get_node(i);
+    for (auto &i: friends) {
+      auto fr = db->get_node(i.first);
       fr->remove_friend(old_id);
       fr->add_friend(this);
     }
@@ -107,5 +119,21 @@ void Profile::set_data(NodeData const &data)
   this->data = data;
 }
 
-Profile::Profile() : db(nullptr), profile_name("") { }
+Profile::Profile() : Profile(nullptr, "", 0) { }
+
+const bool Profile::has_friend(id_t id) const
+{
+  auto res = false;
+  try {
+    res = friends.at(id);
+  } catch (std::out_of_range const &e) { // key does not exist
+    res = false;
+  }
+  return res;
+}
+
+const bool Profile::has_friend(IFaceBookletNode *node) const
+{
+  return has_friend(node->get_id());
+}
 } // fb

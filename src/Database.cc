@@ -2,7 +2,7 @@
 // Created by Steven on 4/9/15.
 //
 
-#include <facebooklet/face.h>
+#include "face.h"
 #include <vector>
 #include <memory>
 
@@ -56,14 +56,14 @@ void Database::remove_node(id_t id)
   }
 }
 
-Profile *Database::insert_profile(std::string const &name)
+Profile *Database::insert_profile(std::string const &name,
+                                  time_t creation_time = 0)
 {
   auto profile = new Profile(this, name);
 
 
   return (Profile *) new_node(profile);
 }
-
 
 std::vector<id_t> Database::ids_with_name(std::string name) { return {}; }
 

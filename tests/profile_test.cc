@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
 
-#include <facebooklet/face.h>
+#include "../src/face.h"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -23,8 +23,8 @@ protected:
   {
     Test::SetUp();
 
-    bob = db.insert_profile("bob");
-    bill = db.insert_profile("bill");
+    bob = db.insert_profile("bob", 0);
+    bill = db.insert_profile("bill", 0);
   }
 
   virtual void TearDown()
@@ -89,11 +89,11 @@ TEST_F(ProfileTests, RemoveFriend)
 
   bob->remove_friend(bill->get_id());
 
-  EXPECT_EQ(nullptr, bob->get_friend(bill->get_id()));
-  EXPECT_EQ(nullptr, bill->get_friend(bob->get_id()));
+  EXPECT_EQ(false, bob->has_friend(bill));
+  EXPECT_EQ(false, bill->has_friend(bob));
 }
 
 TEST_F(ProfileTests, ProfileEq)
 {
-
+  EXPECT_EQ(*bob, *bob);
 }

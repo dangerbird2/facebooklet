@@ -2,7 +2,7 @@
 // Created by Steven on 4/10/15.
 //
 
-#include <facebooklet/face.h>
+#include "../src/face.h"
 #include <gtest/gtest.h>
 
 using namespace fb;

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(animal)
+project(facebooklet)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 
@@ -11,6 +11,18 @@ set(FACE_SRC
     src/FBProfile.cc
     src/Database.cc
     src/NodeData.cc)
+
+set(FACE_HDR
+    src/face.h
+    src/FaceBooklet.h
+    src/FBProfile.h
+    src/interfaces.h
+    src/NodeData.h
+    src/utils.h)
+
+file(COPY ${FACE_HDR}
+    DESTINATION ${CMAKE_BINARY_DIR}/include/facebooklet)
+
 
 set(FACE_TEST_SRC
     tests/test_run.cc
