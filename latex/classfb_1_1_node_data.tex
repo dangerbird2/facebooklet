@@ -1,0 +1,78 @@
+\hypertarget{classfb_1_1_node_data}{\section{fb\+:\+:Node\+Data Class Reference}
+\label{classfb_1_1_node_data}\index{fb\+::\+Node\+Data@{fb\+::\+Node\+Data}}
+}
+
+
+the class containing a node's basic information and post history.  all \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} types use this class for storing object and post history data. (consider how a Facebook wall is functionally identical for people, groups, and pages.)  
+
+
+
+
+{\ttfamily \#include $<$Node\+Data.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfb_1_1_node_data_af784d2cb623aef4b31514fbe37512a5d}{\hyperlink{classfb_1_1_node_data_af784d2cb623aef4b31514fbe37512a5d}{Node\+Data} ()}\label{classfb_1_1_node_data_af784d2cb623aef4b31514fbe37512a5d}
+
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\hyperlink{classfb_1_1_node_data_abe279b5d0d097b73124eba83b9ce0cab}{Node\+Data} (std\+::string const \&name, time\+\_\+t creation\+\_\+time=0, std\+::vector$<$ \hyperlink{structfb_1_1_node_post}{Node\+Post} $>$ const \&posts=\{\})
+\begin{DoxyCompactList}\small\item\em parameter constructor \end{DoxyCompactList}\item 
+\hypertarget{classfb_1_1_node_data_a4377f6518c8bbd10257dd2bf586d19c2}{std\+::string const \& {\bfseries get\+\_\+name} () const }\label{classfb_1_1_node_data_a4377f6518c8bbd10257dd2bf586d19c2}
+
+\item 
+\hypertarget{classfb_1_1_node_data_ab27858fd3d554fc73cf579485e4a6794}{void {\bfseries set\+\_\+name} (std\+::string \&name)}\label{classfb_1_1_node_data_ab27858fd3d554fc73cf579485e4a6794}
+
+\item 
+\hypertarget{classfb_1_1_node_data_a3b2687e4867f4c649d9774cf9f41cea1}{std\+::vector$<$ \hyperlink{structfb_1_1_node_post}{Node\+Post} $>$ const \& {\bfseries get\+\_\+posts} () const }\label{classfb_1_1_node_data_a3b2687e4867f4c649d9774cf9f41cea1}
+
+\item 
+\hypertarget{classfb_1_1_node_data_a7e0387a3b5f6f28b07b9ba1faf007298}{void {\bfseries set\+\_\+posts} (std\+::vector$<$ \hyperlink{structfb_1_1_node_post}{Node\+Post} $>$ const \&posts)}\label{classfb_1_1_node_data_a7e0387a3b5f6f28b07b9ba1faf007298}
+
+\item 
+\hypertarget{classfb_1_1_node_data_ad0b7ee528004047aa1063965b4537820}{void {\bfseries set\+\_\+time} (time\+\_\+t time)}\label{classfb_1_1_node_data_ad0b7ee528004047aa1063965b4537820}
+
+\item 
+\hypertarget{classfb_1_1_node_data_a4eb55ccdaa280ac553252419e5118593}{time\+\_\+t {\bfseries get\+\_\+time} () const }\label{classfb_1_1_node_data_a4eb55ccdaa280ac553252419e5118593}
+
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfb_1_1_node_data_afc99fbf74a99bfdfcd08a0adaca816d0}{bool {\bfseries operator==} (\hyperlink{classfb_1_1_node_data}{Node\+Data} const \&lhs, \hyperlink{classfb_1_1_node_data}{Node\+Data} const \&rhs)}\label{classfb_1_1_node_data_afc99fbf74a99bfdfcd08a0adaca816d0}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+the class containing a node's basic information and post history.  all \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} types use this class for storing object and post history data. (consider how a Facebook wall is functionally identical for people, groups, and pages.) 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classfb_1_1_node_data_abe279b5d0d097b73124eba83b9ce0cab}{\index{fb\+::\+Node\+Data@{fb\+::\+Node\+Data}!Node\+Data@{Node\+Data}}
+\index{Node\+Data@{Node\+Data}!fb\+::\+Node\+Data@{fb\+::\+Node\+Data}}
+\subsubsection[{Node\+Data}]{\setlength{\rightskip}{0pt plus 5cm}fb\+::\+Node\+Data\+::\+Node\+Data (
+\begin{DoxyParamCaption}
+\item[{std\+::string const \&}]{name, }
+\item[{time\+\_\+t}]{creation\+\_\+time = {\ttfamily 0}, }
+\item[{std\+::vector$<$ {\bf Node\+Post} $>$ const \&}]{posts = {\ttfamily \{\}}}
+\end{DoxyParamCaption}
+)}}\label{classfb_1_1_node_data_abe279b5d0d097b73124eba83b9ce0cab}
+
+
+parameter constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of Node object \\
+\hline
+{\em creation\+\_\+time} & Unix timestamp of node's creation \\
+\hline
+{\em posts} & vector copied to \hyperlink{classfb_1_1_node_data}{Node\+Data}'s post history \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Shea/cmps/facebooklet/src/Node\+Data.\+h\item 
+/\+Users/\+Shea/cmps/facebooklet/src/Node\+Data.\+cc\end{DoxyCompactItemize}
