@@ -83,6 +83,9 @@ TEST_F(ProfileTests, AddFriend)
 
 TEST_F(ProfileTests, RemoveFriend)
 {
+  ASSERT_NE(bob, bill);
+  ASSERT_NE(bob->get_id(), bill->get_id());
+
   bob->add_friend(bill);
   EXPECT_EQ(bill->get_friend(bob->get_id()),
             bob);

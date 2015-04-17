@@ -1,5 +1,6 @@
 #include "face.h"
 #include <sstream>
+#include <algorithm>
 #include <assert.h>
 
 namespace fb {
@@ -58,7 +59,6 @@ void Profile::add_friend(IFaceBookletNode *fr)
   auto friend_id = fr->get_id();
 
   if (friend_id == id || fr == this) {
-    cerr << "\nnode fr == this";
     return;
   }
 
@@ -82,25 +82,30 @@ void Profile::remove_friend(id_t fr_id)
     if (fr->has_friend(id)) {
       fr->remove_friend(id);
     }
-
-
   }
 }
 
 Profile::~Profile() { }
 
-void Profile::set_id(id_t id)
+void Profile::set_id(id_t new_id)
 {
   auto old_id = this->id;
-  this->id = id;
+  this->id = new_id;
 
   if (friends.size() > 0) {
     // reset friend ids
-    for (auto &i: friends) {
+
+    for(auto &i: friends) {
       auto fr = db->get_node(i.first);
-      fr->remove_friend(old_id);
-      fr->add_friend(this);
+      auto is_friend = i.second;
+      if (is_friend && fr && (fr != this)) {
+        fr->remove_friend(old_id);
+        fr->add_friend(this);
+      } else {
+        cerr << "can't find friend id:" << i.first << endl;
+      }
     }
+
   }
 }
 

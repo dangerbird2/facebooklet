@@ -26,20 +26,15 @@ public:
   std::string const describe() const;
 
   IFaceBookletNode const *get_friend(id_t id) const;
-
   IFaceBookletNode *get_friend(id_t fr_id);
 
   void add_friend(IFaceBookletNode *fr);
-
   void remove_friend(id_t id);
 
-  void set_id(id_t id);
-
+  void set_id(id_t new_id);
 
   NodeData &get_data();
-
   NodeData const &get_data() const;
-
   void set_data(NodeData const &data);
 
 
