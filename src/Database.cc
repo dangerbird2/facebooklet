@@ -5,6 +5,7 @@
 #include "face.h"
 #include <vector>
 #include <memory>
+#include <time.h>
 
 namespace fb {
 
@@ -57,9 +58,10 @@ void Database::remove_node(id_t id)
 }
 
 Profile *Database::insert_profile(std::string const &name,
-                                  time_t creation_time = 0)
+                                  time_t creation_time,
+                                  Date const & birthday)
 {
-  auto profile = new Profile(this, name);
+  auto profile = new Profile(this, name, birthday, creation_time);
 
 
   return (Profile *) new_node(profile);
@@ -68,4 +70,22 @@ Profile *Database::insert_profile(std::string const &name,
 std::vector<id_t> Database::ids_with_name(std::string name) { return {}; }
 
 Database::~Database() { }
+
+
+Database::Database(Database const &db) :
+    nodes(copy_nodemap(db.nodes)), id_count(db.id_count) { }
+
+map<id_t, NodeUptr> copy_nodemap(std::map<id_t, NodeUptr> const &m)
+{
+  map<id_t, NodeUptr> copied;
+
+  using val_t = map<id_t, NodeUptr>::value_type;
+
+  for (auto const &i: m) {
+    auto copy_val = i.second->heap_copy();
+    copied.insert(make_pair(i.first, NodeUptr(copy_val)));
+  }
+
+  return copied;
+}
 }

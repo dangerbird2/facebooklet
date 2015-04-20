@@ -10,15 +10,19 @@ set(FACE_SRC
     src/FaceBooklet.cc
     src/FBProfile.cc
     src/Database.cc
-    src/NodeData.cc)
+    src/NodeData.cc
+    src/Date.cc)
 
 set(FACE_HDR
     src/face.h
     src/FaceBooklet.h
     src/FBProfile.h
-    src/interfaces.h
+    src/INode.h
     src/NodeData.h
-    src/utils.h)
+    src/utils.h
+    src/Date.h)
+
+set(FACE_EXEC_SRC src/main.cc)
 
 file(COPY ${FACE_HDR}
     DESTINATION ${CMAKE_BINARY_DIR}/include/facebooklet)
@@ -27,7 +31,8 @@ file(COPY ${FACE_HDR}
 set(FACE_TEST_SRC
     tests/test_run.cc
     tests/profile_test.cc
-    tests/db_test.cc)
+    tests/db_test.cc
+    tests/booklet_test.cc)
 
 # find doxygen and generate docs
 find_package(Doxygen)
@@ -57,3 +62,7 @@ target_link_libraries(facebooklet_tests
     gtest_main
     gmock
     gmock_main)
+
+add_executable(facebooklet_main ${FACE_EXEC_SRC})
+target_link_libraries(facebooklet_main
+    facebooklet)

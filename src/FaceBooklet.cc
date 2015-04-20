@@ -1,22 +1,30 @@
 #include "face.h"
+#include <iostream>
+#include <string>
 
+
+using namespace std;
 namespace fb {
-
-FaceBooklet::FaceBooklet() { }
 
 FaceBooklet::~FaceBooklet() { }
 
-void FaceBooklet::run() { }
 
+FaceBooklet::FaceBooklet(Database const &db,
+                         Prompter<std::istream> const &prompter):
+    db(db), prompter(prompter) {}
 
-std::ostream &operator<<(std::ostream &os, const IFaceBookletNode &node)
+FaceBooklet::FaceBooklet() : prompter(std::cin) {}
+
+FaceBooklet::FaceBooklet(FaceBooklet & book) : db(book.db), prompter(book.prompter) {}
+
+void FaceBooklet::run()
 {
-  return os << node.describe();
+  string s;
+  cout << "give me a string ->";
+  prompter.in >> s;
+  cout << endl << s << endl;
 }
 
-bool operator==(IFaceBookletNode const &self, IFaceBookletNode const &rhs)
-{
-  return self.get_id() == rhs.get_id();
-}
+
 
 } // fb

@@ -16,6 +16,11 @@ namespace fb {
  */
 struct IFaceBookletNode {
 
+
+  /**
+   * @brief returns a copy of the node allocated via new()
+   */
+  virtual IFaceBookletNode *heap_copy() = 0;
   /**
    * @brief getter for booklet's id tag
    * @returns id value
@@ -24,7 +29,7 @@ struct IFaceBookletNode {
 
   /**
    * @brief setter for booklet's id tag.
-   * @detail this should be used with caution,
+   * @details this should be used with caution,
    * as all other relationships depend on node ids.
    * It is probably best to handle id modifications in
    * the host database instance.
@@ -44,14 +49,14 @@ struct IFaceBookletNode {
 
   /**
    * @brief get node's description.
-   * @detail Used for printing to
+   * @details Used for printing to
    * std::ostream
    */
   virtual std::string const describe() const = 0;
 
   /**
    * @brief retrieves a friend by id number.
-   * @detail const method
+   * @details const method
    *
    * @param id id of friend
    * @returns pointer to friend node, or if id is not a friend,
@@ -61,7 +66,7 @@ struct IFaceBookletNode {
 
   /**
    * @brief retrieves a friend by id number. const method.
-   * @detail const method
+   * @details const method
    *
    * @param id id of friend
    * @returns pointer to friend node, or if id is not a friend,
@@ -109,27 +114,6 @@ bool operator==(IFaceBookletNode const &self,
 using NodeUptr = std::unique_ptr<IFaceBookletNode>;
 using NodeSptr = std::shared_ptr<IFaceBookletNode>;
 using NodeWptr = std::weak_ptr<IFaceBookletNode>;
-
-/**
- * interface class for database
- */
-struct IDatabase {
-  virtual ~IDatabase() { }
-
-  virtual IFaceBookletNode *get_node(id_t id) = 0;
-
-  virtual IFaceBookletNode *set_node(id_t id, IFaceBookletNode *node) = 0;
-
-  virtual IFaceBookletNode *new_node(IFaceBookletNode *node) = 0;
-
-  virtual bool has_node(id_t id) = 0;
-
-  virtual void remove_node(id_t id) = 0;
-
-  virtual std::vector<id_t> ids_with_name(std::string name) = 0;
-
-};
-
 
 } // fb
 
