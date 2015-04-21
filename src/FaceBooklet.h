@@ -97,7 +97,7 @@ public:
   /**
    * @brief copy constructor
    */
-  FaceBooklet(FaceBooklet &book);
+  FaceBooklet(FaceBooklet &book) = delete;
   virtual ~FaceBooklet();
 
   /**

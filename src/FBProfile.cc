@@ -78,11 +78,11 @@ void Profile::add_friend(IFaceBookletNode *fr)
 
 void Profile::remove_friend(id_t fr_id)
 {
-  auto fr = get_friend(id);
+  auto fr = get_friend(fr_id);
   if (fr) {
     friends.at(id) = false;
 
-    if (fr->has_friend(id)) {
+    if (fr->has_friend(fr_id)) {
       fr->remove_friend(id);
     }
 
@@ -90,7 +90,9 @@ void Profile::remove_friend(id_t fr_id)
   }
 }
 
-Profile::~Profile() { }
+Profile::~Profile() {
+  IFaceBookletNode::~IFaceBookletNode();
+}
 
 void Profile::set_id(id_t id)
 {

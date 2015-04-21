@@ -19,4 +19,16 @@ protected:
   }
 };
 
-TEST_F(DataTests)
+/*
+TEST_F(DataTests, PostData) {
+  auto data1 = NodePost("hello", 0);
+  auto data2 = NodePost("hello", 0);
+  auto data3 = NodePost("world", 0);
+  auto data4 = NodePost("hello", 1);
+
+  EXPECT_EQ(data1, data2);
+  EXPECT_NE(data1, data3);
+  EXPECT_NE(data1, data4);
+}
+
+*/

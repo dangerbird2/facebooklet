@@ -22,6 +22,7 @@ namespace fb {
  */
 struct IFaceBookletNode {
 
+  virtual ~IFaceBookletNode() {}
 
   /**
    * @brief returns a copy of the node allocated via new()

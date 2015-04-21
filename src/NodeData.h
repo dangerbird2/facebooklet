@@ -28,7 +28,7 @@ namespace fb {
  */
 struct NodePost {
   NodePost(const std::string &text, time_t t) :
-      text(text), time(t) { }
+      text(std::string(text)), time(t) { }
 
   std::string text;
   time_t time;
@@ -62,6 +62,11 @@ public:
   NodeData(std::string const &name,
            time_t creation_time = 0,
            std::vector<NodePost> const &posts = {});
+
+  NodeData(NodeData const &data);
+  NodeData operator=(NodeData const &data);
+
+  ~NodeData(){}
 
   /*
    * name getter/setter property

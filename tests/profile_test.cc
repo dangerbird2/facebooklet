@@ -23,8 +23,8 @@ protected:
   {
     Test::SetUp();
 
-    bob = db.insert_profile("bob", 0, <#initializer#>);
-    bill = db.insert_profile("bill", 0, <#initializer#>);
+    bob = db.insert_profile("bob", 0, Date());
+    bill = db.insert_profile("bill", 0, Date());
   }
 
   virtual void TearDown()

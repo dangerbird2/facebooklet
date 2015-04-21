@@ -24,6 +24,9 @@ class Database {
 public:
   Database();
 
+  /**
+   * @brief destructor
+   */
   virtual ~Database();
 
   /**
@@ -31,7 +34,10 @@ public:
    */
   Database(Database const &db);
 
-  Database operator=(Database const &db) { return Database(db); }
+  /**
+   * @brief assign operator
+   */
+  Database operator=(Database const &db);
 
   IFaceBookletNode *get_node(id_t id);
 
@@ -49,11 +55,13 @@ public:
                           Date const &birthday = Date(1, Month::Jan, 1970));
 
 private:
-  std::map<id_t, NodeUptr> nodes;
+  std::map<id_t, IFaceBookletNode*> nodes;
   id_t id_count;
 };
 
-std::map<id_t, NodeUptr> copy_nodemap(std::map<id_t, NodeUptr> const &m);
+std::map<id_t, IFaceBookletNode*>copy_nodemap
+    (std::map<id_t, IFaceBookletNode*> const &mp);
+
 }
 
 #endif // FB_DATABASE_H

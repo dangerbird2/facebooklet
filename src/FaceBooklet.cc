@@ -15,8 +15,6 @@ FaceBooklet::FaceBooklet(Database const &db,
 
 FaceBooklet::FaceBooklet() : prompter(std::cin) {}
 
-FaceBooklet::FaceBooklet(FaceBooklet & book) : db(book.db), prompter(book.prompter) {}
-
 void FaceBooklet::run()
 {
   string s;
