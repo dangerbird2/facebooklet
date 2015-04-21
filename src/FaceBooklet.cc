@@ -2,7 +2,10 @@
 
 namespace fb {
 
-FaceBooklet::FaceBooklet() { }
+FaceBooklet::FaceBooklet() : db(Database())
+{
+  prompter = Prompter(&db);
+}
 
 FaceBooklet::~FaceBooklet() { }
 
@@ -19,4 +22,11 @@ bool operator==(IFaceBookletNode const &self, IFaceBookletNode const &rhs)
   return self.get_id() == rhs.get_id();
 }
 
+FaceBooklet::FaceBooklet(Database &&db)
+    : db(std::move(db))
+{
+  prompter = Prompter(&db);
+}
+
+Database *FaceBooklet::get_db() { return &db; }
 } // fb

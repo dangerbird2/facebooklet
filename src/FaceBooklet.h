@@ -23,14 +23,12 @@ class Database;
  * @details Implemented as a template class for generic
  * i/o streams. Allows automated testing of prompter 
  * with string streams
- * 
- * @tparam ISTREAM_T=std::istream an input stream STL
- * type
+ *
  */
-template <typename ISTREAM_T=std::istream>
+
 class Prompter {
 public:
-  Prompter(ISTREAM_T &in) : in(in) {}
+  Prompter(Database *db = nullptr) : db(db) { }
 
   /**
    * @brief generates a new profile
@@ -39,14 +37,18 @@ public:
    * @return a pointer to the new profile, added
    * to the database
    */
-  Profile * create_profile(Database *db) {
+  Profile *create_profile(std::istream &in)
+  {
+    if (!db) { return nullptr; }
     auto t = time(NULL);
     std::string name;
     int m = -1;
     int y = -1;
     int d = -1;
     bool res = false;
-    while(!res) {
+
+    const int n = 5;
+    for (int i = 0; i < n && !res; ++i) {
       std::cout << "what is your name?->";
       in >> name;
       if (name == "") {
@@ -58,10 +60,6 @@ public:
     }
     res = false;
 
-    while (!res) {
-
-      res = true;
-    }
 
 
     auto bday = Date(d, static_cast<Month>(m), y);
@@ -69,7 +67,7 @@ public:
     return profile;
   }
 
-  ISTREAM_T &in;
+  Database *db;
 };
 
 
@@ -90,7 +88,7 @@ public:
    * @param db database object (copied to the db field)
    * @param prompter promper object for user input
    */
-  FaceBooklet(Database const &db, Prompter<std::istream> const &prompter);
+  FaceBooklet(Database &&db);
 
   /**
    * @brief copy constructor
@@ -103,6 +101,12 @@ public:
    * @details [long description]
    */
   void run();
+
+  Database *get_db();
+
+private:
+  Database db;
+  Prompter prompter;
 
 };
 

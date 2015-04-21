@@ -49,8 +49,11 @@ public:
   time_t day;
   Month month;
   time_t year;
+
+  friend bool operator==(Date const &lhs, Date const &rhs);
 };
 
+bool operator==(Date const &lhs, Date const &rhs);
 
 
 }

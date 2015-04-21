@@ -2,8 +2,8 @@
 // Created by Steven on 4/9/15.
 //
 
-#ifndef ANIMAL_DATABASE_H
-#define ANIMAL_DATABASE_H
+#ifndef FACEBOOKLET_DATABASE_H
+#define FACEBOOKLET_DATABASE_H
 
 #include "interfaces.h"
 #include "FBProfile.h"
@@ -26,7 +26,14 @@ public:
   virtual ~Database();
 
 
-  Database(Database &db) = delete;
+  Database(Database const &db) = delete;
+
+  Database(Database &&db) : id_count(db.id_count)
+  {
+    for (auto &&i: db.nodes) {
+      nodes.insert(std::move(i));
+    }
+  }
 
   IFaceBookletNode *get_node(id_t id);
 
@@ -49,4 +56,4 @@ private:
 
 }
 
-#endif // ANIMAL_DATABASE_H
+#endif // FACEBOOKLET_DATABASE_H

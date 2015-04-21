@@ -60,7 +60,10 @@ IFaceBookletNode *fb::Database::set_node(id_t id, IFaceBookletNode *node)
   return node;
 }
 
-bool Database::has_node(id_t id) { return nodes.count(id) > 0; }
+bool Database::has_node(id_t id)
+{
+  return nodes.count(id) > 0;
+}
 
 void Database::remove_node(id_t id)
 {
