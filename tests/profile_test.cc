@@ -60,18 +60,25 @@ TEST_F(ProfileTests, DbId)
   EXPECT_EQ(id, bill->get_id());
 }
 
+TEST_F(ProfileTests, HasFriend)
+{
+  EXPECT_FALSE(bill->has_friend(bob));
+  EXPECT_FALSE(bill->has_friend(bob->get_id()));
+}
+
 TEST_F(ProfileTests, GetFriend)
 {
   bill->add_friend(bob);
 
   EXPECT_EQ(bill->get_friend(bob->get_id()),
             bob);
+  EXPECT_TRUE(bill->has_friend(bob));
 
   bill->add_friend(bill);
   // you shouldn't be your own friend
-  auto my_own_friend = bill->get_friend(bill->get_id());
-  EXPECT_NE(bill, my_own_friend);
-  EXPECT_EQ(nullptr, my_own_friend);
+  EXPECT_FALSE(bill->has_friend(bill));
+
+
 }
 
 TEST_F(ProfileTests, AddFriend)
@@ -88,6 +95,7 @@ TEST_F(ProfileTests, RemoveFriend)
             bob);
 
   bob->remove_friend(bill->get_id());
+  bill->remove_friend(bob->get_id());
 
   EXPECT_EQ(false, bob->has_friend(bill));
   EXPECT_EQ(false, bill->has_friend(bob));

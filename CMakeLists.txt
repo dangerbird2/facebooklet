@@ -28,7 +28,9 @@ file(COPY ${FACE_HDR}
 set(FACE_TEST_SRC
     tests/test_run.cc
     tests/profile_test.cc
-    tests/db_test.cc)
+    tests/db_test.cc
+    tests/data_test.cc
+    tests/engine_tests.cc)
 
 # find doxygen and generate docs
 find_package(Doxygen)
