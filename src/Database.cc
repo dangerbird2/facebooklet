@@ -67,7 +67,17 @@ Profile *Database::insert_profile(std::string const &name,
   return (Profile *) new_node(profile);
 }
 
-std::vector<id_t> Database::ids_with_name(std::string name) { return {}; }
+std::vector<id_t> Database::ids_with_name(std::string name)
+{
+  auto ids = vector<id_t>();
+
+  for (auto const &p: nodes) {
+    if (p.second->get_data().get_name() == name) {
+      ids.push_back(p.first);
+    }
+  }
+  return ids;
+}
 
 Database::~Database() { }
 

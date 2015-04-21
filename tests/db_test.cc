@@ -18,8 +18,8 @@ protected:
 
   virtual void SetUp()
   {
-    pr1 = db.new_node(new Profile(&db, "bob", <#initializer#>, 0));
-    pr2 = db.new_node(new Profile(&db, "joe", <#initializer#>, 0));
+    pr1 = db.new_node(new Profile(&db, "bob", Date(10, Month::Jan), 1990));
+    pr2 = db.new_node(new Profile(&db, "joe", Date(1, Month::Dec), 3000));
 
   }
 
