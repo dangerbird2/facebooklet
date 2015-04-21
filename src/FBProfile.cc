@@ -6,13 +6,10 @@ namespace fb {
 
 using namespace std;
 
-Profile::Profile(Database *db, std::string const &name, Date const &birthday, time_t time)
+Profile::Profile(Database *db, std::string const &name, time_t time, Date birthday)
     : db(db), id(0), birthday(birthday)
 {
   data = NodeData(name, time);
-  if (db) {
-    db->new_node(this);
-  }
 }
 
 const id_t Profile::get_id() const { return id; }
@@ -124,7 +121,7 @@ void Profile::set_data(NodeData const &data)
   this->data = data;
 }
 
-Profile::Profile() : Profile(nullptr, "", Date(), 0) { }
+Profile::Profile() : Profile(nullptr, "", 0) { }
 
 const bool Profile::has_friend(id_t id) const
 {
@@ -142,29 +139,9 @@ const bool Profile::has_friend(IFaceBookletNode *node) const
   return has_friend(node->get_id());
 }
 
-Date const &Profile::get_birthday() const
-{
-  return birthday;
-}
-
-void Profile::set_birthday(Date const &birthday)
-{
-  this->birthday = birthday;
-}
 
 IFaceBookletNode *Profile::heap_copy()
 {
   return new Profile(*this);
 }
-
-ostream &operator<<(std::ostream &os, const IFaceBookletNode &node)
-{
-  return os << node.describe();
-}
-
-bool operator==(IFaceBookletNode const &self, IFaceBookletNode const &rhs)
-{
-  return self.get_id() == rhs.get_id();
-}
-
 } // fb

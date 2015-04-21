@@ -44,7 +44,7 @@ enum class Month {
  */
 struct Date {
 public:
-  Date(time_t day=1, Month month=Month::Jan , time_t year=1970);
+  Date(time_t day=1, Month month=Month::Jan, time_t year=1970);
 
   time_t day;
   Month month;

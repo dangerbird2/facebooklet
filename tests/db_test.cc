@@ -9,7 +9,6 @@ using namespace fb;
 using namespace std;
 using namespace testing;
 
-
 class DbTest : public Test {
 protected:
   Database db;
@@ -18,8 +17,8 @@ protected:
 
   virtual void SetUp()
   {
-    pr1 = db.new_node(new Profile(&db, "bob", Date(10, Month::Jan), 1990));
-    pr2 = db.new_node(new Profile(&db, "joe", Date(1, Month::Dec), 3000));
+    pr1 = db.insert_profile("bob", time(NULL));
+    pr2 = db.insert_profile("bill", time(NULL) - 100);
 
   }
 

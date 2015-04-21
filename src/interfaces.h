@@ -36,7 +36,7 @@ struct IFaceBookletNode {
 
   /**
    * @brief setter for booklet's id tag.
-   * @details this should be used with caution,
+   * @detail this should be used with caution,
    * as all other relationships depend on node ids.
    * It is probably best to handle id modifications in
    * the host database instance.
@@ -56,14 +56,14 @@ struct IFaceBookletNode {
 
   /**
    * @brief get node's description.
-   * @details Used for printing to
+   * @detail Used for printing to
    * std::ostream
    */
   virtual std::string const describe() const = 0;
 
   /**
    * @brief retrieves a friend by id number.
-   * @details const method
+   * @detail const method
    *
    * @param id id of friend
    * @returns pointer to friend node, or if id is not a friend,
@@ -73,7 +73,7 @@ struct IFaceBookletNode {
 
   /**
    * @brief retrieves a friend by id number. const method.
-   * @details const method
+   * @detail const method
    *
    * @param id id of friend
    * @returns pointer to friend node, or if id is not a friend,
@@ -121,6 +121,7 @@ bool operator==(IFaceBookletNode const &self,
 using NodeUptr = std::unique_ptr<IFaceBookletNode>;
 using NodeSptr = std::shared_ptr<IFaceBookletNode>;
 using NodeWptr = std::weak_ptr<IFaceBookletNode>;
+
 
 } // fb
 

@@ -1,24 +1,20 @@
-/**
- * Created by Steven on 4/9/15.
- * @file
- * @brief FaceBookletDatabase class
- */
+//
+// Created by Steven on 4/9/15.
+//
 
-#ifndef FB_DATABASE_H
-#define FB_DATABASE_H
+#ifndef ANIMAL_DATABASE_H
+#define ANIMAL_DATABASE_H
 
-#include "INode.h"
+#include "interfaces.h"
+#include "FBProfile.h"
+#include "Date.h"
 #include <map>
 #include <vector>
-#include "Date.h"
 
 
 namespace fb {
 
-// predeclare Profile class
 class Profile;
-
-class Date;
 
 class Database {
 public:
@@ -29,15 +25,8 @@ public:
    */
   virtual ~Database();
 
-  /**
-   * @brief copy constructor
-   */
-  Database(Database const &db);
 
-  /**
-   * @brief assign operator
-   */
-  Database operator=(Database const &db);
+  Database(Database &db) = delete;
 
   IFaceBookletNode *get_node(id_t id);
 
@@ -51,17 +40,13 @@ public:
 
   std::vector<id_t> ids_with_name(std::string name);
 
-  Profile *insert_profile(std::string const &name, time_t creation_time,
-                          Date const &birthday = Date(1, Month::Jan, 1970));
+  Profile *insert_profile(std::string const &name, time_t creation_time=0, Date birthday=Date());
 
 private:
-  std::map<id_t, IFaceBookletNode*> nodes;
+  std::map<id_t, NodeUptr> nodes;
   id_t id_count;
 };
 
-std::map<id_t, IFaceBookletNode*>copy_nodemap
-    (std::map<id_t, IFaceBookletNode*> const &mp);
-
 }
 
-#endif // FB_DATABASE_H
+#endif // ANIMAL_DATABASE_H

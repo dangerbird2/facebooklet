@@ -7,12 +7,10 @@
 #ifndef FACE_BOOKLET_H
 #define FACE_BOOKLET_H
 
-
-#include "Database.h"
-#include "FBProfile.h"
-#include <memory>
 #include <iostream>
-#include <string>
+#include "FBProfile.h"
+#include "Date.h"
+
 
 namespace fb {
 
@@ -106,10 +104,7 @@ public:
    */
   void run();
 
-  Prompter<std::istream> prompter;
-  Database db;
 };
-
 
 } // fb
 

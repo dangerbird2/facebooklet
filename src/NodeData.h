@@ -39,7 +39,7 @@ struct NodePost {
 /**
  * @brief the class containing a node's basic information and
  * post history.
- * @details all IFaceBookletNode types use this class
+ * @detail all IFaceBookletNode types use this class
  * for storing object and post history data. (consider how
  * a Facebook wall is functionally identical for people, groups, and
  * pages.)

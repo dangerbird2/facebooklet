@@ -7,8 +7,9 @@
 #ifndef FB_PROFILE_H
 #define FB_PROFILE_H
 
-#include "INode.h"
+#include "interfaces.h"
 #include "Database.h"
+#include "util.h"
 #include "Date.h"
 #include <set>
 #include <map>
@@ -28,7 +29,7 @@ namespace fb {
 class Profile : public IFaceBookletNode {
 public:
 
-  Profile(Database *db, std::string const &name, Date const &birthday=Date(), time_t time=0);
+  Profile(Database *db, std::string const &name, time_t time = 0, Date birthday=Date());
 
   Profile();
 
@@ -61,7 +62,9 @@ public:
    */
   std::string const describe() const;
 
-  /**
+  virtual IFaceBookletNode *heap_copy();
+
+/**
    * @brief retrieves a friend by id number.
    * @details const method
    *
@@ -110,26 +113,15 @@ public:
    */
   const bool has_friend(IFaceBookletNode *node) const;
 
-  Date const & get_birthday() const;
-
-  void set_birthday(Date const &birthday);
-
-  /**
-   * @brief return copy of the node to the heap.
-   * @detail used as a convenience method for copying nodes without knowing
-   * their concrete type
-   */
-  virtual IFaceBookletNode *heap_copy();
-
 private:
   /**
    * object id
    */
   id_t id;
 
+  Date birthday;
 
   NodeData data;
-  Date birthday;
 
   /**
    * pointer to database object
@@ -141,9 +133,8 @@ private:
    * whether or not they are friends
    */
   std::map<id_t, bool> friends;
+
 };
-
-
 
 } // fb
 
