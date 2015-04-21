@@ -70,5 +70,3 @@ bool operator==(NodePost const &lhs, NodePost const &rhs)
 
 NodeData::NodeData() : NodeData("", 0, {}) { }
 }
-
-
