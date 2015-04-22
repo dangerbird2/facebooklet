@@ -21,6 +21,10 @@ time_t NodeData::get_time() const
 NodeData::NodeData(std::string const &name, time_t creation_time, std::vector<NodePost> const &posts) :
     name(name), posts(posts), time(creation_time) { }
 
+NodeData::NodeData(NodeData const &data)
+    : name(data.name), posts(data.posts), time(data.time) { }
+
+NodeData NodeData::operator=(NodeData const &data) { return NodeData(data); }
 
 void NodeData::set_name(std::string &name)
 {
@@ -66,5 +70,3 @@ bool operator==(NodePost const &lhs, NodePost const &rhs)
 
 NodeData::NodeData() : NodeData("", 0, {}) { }
 }
-
-

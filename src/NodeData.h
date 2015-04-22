@@ -1,6 +1,8 @@
-//
-// Created by Steven on 4/14/15.
-//
+/**
+ * Created by Steven on 4/14/15.
+ * @file
+ * @brief contains data for building node data
+ */
 
 #ifndef FB_NODEDATA_H
 #define FB_NODEDATA_H
@@ -13,15 +15,20 @@
 namespace fb {
 
 /**
- * @brief the data for a single post.
+ * @brief Record type for storing data of a single post.
  * @details Does not track the user that posted it,
  * nor does it encapsulate any complex behavior.
  * Instead, it is a simple record structure manipulated by
  * other classes
+ * 
+ * @param text Post text.
+ * @param t Time of post creation.
+ * @param e [description]
+ * @return [description]
  */
 struct NodePost {
-  NodePost(const std::string &text, time_t time) :
-      text(text), time(time) { }
+  NodePost(const std::string &text, time_t t) :
+      text(std::string(text)), time(t) { }
 
   std::string text;
   time_t time;
@@ -56,6 +63,12 @@ public:
            time_t creation_time = 0,
            std::vector<NodePost> const &posts = {});
 
+  NodeData(NodeData const &data);
+
+  NodeData operator=(NodeData const &data);
+
+  ~NodeData() { }
+
   /*
    * name getter/setter property
    */
@@ -71,11 +84,16 @@ public:
   void set_posts(std::vector<NodePost> const &posts);
 
 
-  /*
-   * time getter/setter property
+  /**
+   * @brief sets time property
+   * @param t time related to c time() function
    */
-  void set_time(time_t time);
+  void set_time(time_t t);
 
+  /**
+   * @brief gets time property
+   * @return [description]
+   */
   time_t get_time() const;
 
   /*
@@ -89,8 +107,14 @@ private:
   time_t time;
 };
 
+/**
+ * @brief equality operator for NodePost
+ */
 bool operator==(NodePost const &lhs, NodePost const &rhs);
 
+/**
+ * @brief equality operator for NodeData
+ */
 bool operator==(NodeData const &lhs, NodeData const &rhs);
 
 }

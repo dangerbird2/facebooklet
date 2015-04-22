@@ -1,14 +1,9 @@
-//
-// Created by Steven on 4/22/15.
-//
-#include "face.h"
-#include <iostream>
 
-int main(int argc, char **argv)
+#include "face.h"
+
+int main(int argc, char const *argv[])
 {
-  int n;
-  std::cout << "give me a number\n";
-  std::cin >> n;
-  std::cout << n <<"\n";
-  return 0;
+    fb::FaceBooklet face;
+    face.run();
+    return 0;
 }

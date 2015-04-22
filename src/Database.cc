@@ -4,6 +4,9 @@
 
 #include "face.h"
 #include <vector>
+#include <map>
+#include <time.h>
+#include <assert.h>
 #include <memory>
 
 namespace fb {
@@ -16,6 +19,10 @@ using namespace std;
 
 Database::Database() : id_count(0) { }
 
+Database::~Database()
+{
+}
+
 IFaceBookletNode *Database::get_node(id_t id)
 {
   auto node = (IFaceBookletNode *) nullptr;
@@ -27,12 +34,15 @@ IFaceBookletNode *Database::get_node(id_t id)
   return node;
 }
 
+
 IFaceBookletNode *Database::new_node(IFaceBookletNode *node)
 {
+  if (!node) { return nullptr; }
   auto id = ++id_count;
 
   return set_node(id, node);
 }
+
 
 IFaceBookletNode *fb::Database::set_node(id_t id, IFaceBookletNode *node)
 {
@@ -43,11 +53,17 @@ IFaceBookletNode *fb::Database::set_node(id_t id, IFaceBookletNode *node)
     node->set_id(id);
   }
   remove_node(id);
-  nodes[id] = std::unique_ptr<IFaceBookletNode>(node);
-  return nodes[id].get();
+  nodes.insert(make_pair(id, move(NodeUptr(node))));
+
+  assert(nodes.at(id));
+
+  return node;
 }
 
-bool Database::has_node(id_t id) { return nodes.count(id) > 0; }
+bool Database::has_node(id_t id)
+{
+  return nodes.count(id) > 0;
+}
 
 void Database::remove_node(id_t id)
 {
@@ -57,15 +73,25 @@ void Database::remove_node(id_t id)
 }
 
 Profile *Database::insert_profile(std::string const &name,
-                                  time_t creation_time = 0)
+                                  time_t creation_time,
+                                  Date birthday)
 {
-  auto profile = new Profile(this, name);
+  auto profile = Profile(this, name, creation_time, birthday);
 
-
-  return (Profile *) new_node(profile);
+  return (Profile *) new_node(profile.heap_copy());
 }
 
-std::vector<id_t> Database::ids_with_name(std::string name) { return {}; }
+std::vector<id_t> Database::ids_with_name(std::string name)
+{
+  auto ids = vector<id_t>();
+  for (auto const &i: nodes) {
+    if (!i.second) { continue; }
+    auto name2 = i.second->get_data().get_name();
+    if (name2 == name) {
+      ids.push_back(i.first);
+    }
+  }
+  return ids;
+}
 
-Database::~Database() { }
 }

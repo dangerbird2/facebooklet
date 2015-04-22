@@ -7,10 +7,10 @@ namespace fb {
 
 using namespace std;
 
-Profile::Profile(IDatabase *db, std::string const &name, time_t time)
-    : db(db), id(0)
+Profile::Profile(Database *db, std::string const &name, time_t time, Date birthday)
+    : db(db), id(0), birthday(birthday), data(NodeData(name, time))
 {
-  data = NodeData(name, time);
+  ;
 }
 
 const id_t Profile::get_id() const { return id; }
@@ -18,6 +18,7 @@ const id_t Profile::get_id() const { return id; }
 string const Profile::describe() const
 {
   auto buff = stringstream();
+
   buff << "{Profile:" << data.get_name() << " id:" << id << "}";
 
   return string(buff.str());
@@ -50,7 +51,6 @@ IFaceBookletNode *Profile::get_friend(id_t fr_id)
 
 void Profile::add_friend(IFaceBookletNode *fr)
 {
-
   if (!fr) {
     cerr << "\tfr is nullptr\n";
     return;
@@ -75,17 +75,19 @@ void Profile::add_friend(IFaceBookletNode *fr)
 
 void Profile::remove_friend(id_t fr_id)
 {
-  auto fr = get_friend(id);
+  auto fr = get_friend(fr_id);
   if (fr) {
-    friends.at(id) = false;
-
-    if (fr->has_friend(id)) {
-      fr->remove_friend(id);
+    if (has_friend(fr_id)) {
+      friends.erase(fr_id);
+      cerr << friends.count(fr_id);
     }
   }
 }
 
-Profile::~Profile() { }
+Profile::~Profile()
+{
+  IFaceBookletNode::~IFaceBookletNode();
+}
 
 void Profile::set_id(id_t new_id)
 {
@@ -128,7 +130,7 @@ Profile::Profile() : Profile(nullptr, "", 0) { }
 
 const bool Profile::has_friend(id_t id) const
 {
-  auto res = false;
+  bool res = false;
   try {
     res = friends.at(id);
   } catch (std::out_of_range const &e) { // key does not exist
@@ -140,5 +142,11 @@ const bool Profile::has_friend(id_t id) const
 const bool Profile::has_friend(IFaceBookletNode *node) const
 {
   return has_friend(node->get_id());
+}
+
+
+IFaceBookletNode *Profile::heap_copy()
+{
+  return new Profile(*this);
 }
 } // fb

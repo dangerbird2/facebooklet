@@ -1,0 +1,240 @@
+\hypertarget{classfb_1_1_profile}{\section{fb\+:\+:Profile Class Reference}
+\label{classfb_1_1_profile}\index{fb\+::\+Profile@{fb\+::\+Profile}}
+}
+
+
+Facebooklet profile class.  
+
+
+
+
+{\ttfamily \#include $<$F\+B\+Profile.\+h$>$}
+
+Inheritance diagram for fb\+:\+:Profile\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classfb_1_1_profile}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classfb_1_1_profile_a42a0625bef011a0280735db1340e7235}{{\bfseries Profile} (\hyperlink{classfb_1_1_database}{Database} $\ast$db, std\+::string const \&name, \hyperlink{structfb_1_1_date}{Date} const \&birthday=\hyperlink{structfb_1_1_date}{Date}(), time\+\_\+t time=0)}\label{classfb_1_1_profile_a42a0625bef011a0280735db1340e7235}
+
+\item 
+const id\+\_\+t \hyperlink{classfb_1_1_profile_aee2df153f7923d0d5c24eb3c11dfff67}{get\+\_\+id} () const 
+\begin{DoxyCompactList}\small\item\em getter for booklet's id tag \end{DoxyCompactList}\item 
+void \hyperlink{classfb_1_1_profile_a8fe32885a03ac7c92675ede58a230f34}{set\+\_\+id} (id\+\_\+t id)
+\begin{DoxyCompactList}\small\item\em setter for booklet's id tag. \end{DoxyCompactList}\item 
+std\+::string const \hyperlink{classfb_1_1_profile_a657f6cab3f2caee6fc4b9c8758a711b3}{describe} () const 
+\begin{DoxyCompactList}\small\item\em get node's description. \end{DoxyCompactList}\item 
+\hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} const $\ast$ \hyperlink{classfb_1_1_profile_abd95cad4820c261601b20372f634bd2a}{get\+\_\+friend} (id\+\_\+t id) const 
+\begin{DoxyCompactList}\small\item\em retrieves a friend by id number. \end{DoxyCompactList}\item 
+\hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$ \hyperlink{classfb_1_1_profile_a6c9f78b9cb0c1e30d22d17265736a956}{get\+\_\+friend} (id\+\_\+t fr\+\_\+id)
+\begin{DoxyCompactList}\small\item\em retrieves a friend by id number. const method. \end{DoxyCompactList}\item 
+\hypertarget{classfb_1_1_profile_a2090dc97786cb7cbabf2edf5065b0ddc}{void \hyperlink{classfb_1_1_profile_a2090dc97786cb7cbabf2edf5065b0ddc}{add\+\_\+friend} (\hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$fr)}\label{classfb_1_1_profile_a2090dc97786cb7cbabf2edf5065b0ddc}
+
+\begin{DoxyCompactList}\small\item\em add a friend to node's friend list \end{DoxyCompactList}\item 
+\hypertarget{classfb_1_1_profile_a45472768709c2eb8665ce6e50e2fb5ce}{void {\bfseries remove\+\_\+friend} (id\+\_\+t id)}\label{classfb_1_1_profile_a45472768709c2eb8665ce6e50e2fb5ce}
+
+\item 
+\hypertarget{classfb_1_1_profile_a6a579e8b0adade2c3cd499882cf473fc}{\hyperlink{classfb_1_1_node_data}{Node\+Data} \& {\bfseries get\+\_\+data} ()}\label{classfb_1_1_profile_a6a579e8b0adade2c3cd499882cf473fc}
+
+\item 
+\hypertarget{classfb_1_1_profile_abc344e9cdafc14dafdaa74678a3cfa48}{\hyperlink{classfb_1_1_node_data}{Node\+Data} const \& {\bfseries get\+\_\+data} () const }\label{classfb_1_1_profile_abc344e9cdafc14dafdaa74678a3cfa48}
+
+\item 
+\hypertarget{classfb_1_1_profile_a278304ec0bd7b0f079292069da3cf46f}{void {\bfseries set\+\_\+data} (\hyperlink{classfb_1_1_node_data}{Node\+Data} const \&data)}\label{classfb_1_1_profile_a278304ec0bd7b0f079292069da3cf46f}
+
+\item 
+const bool \hyperlink{classfb_1_1_profile_a5f74385d661e8923dd5e66faf35247d7}{has\+\_\+friend} (id\+\_\+t id) const 
+\begin{DoxyCompactList}\small\item\em indicates if a node has a given friend. \end{DoxyCompactList}\item 
+const bool \hyperlink{classfb_1_1_profile_abe318da2aba42f412dc7373057aa983b}{has\+\_\+friend} (\hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$node) const 
+\begin{DoxyCompactList}\small\item\em indicates if a node has a given friend. \end{DoxyCompactList}\item 
+\hypertarget{classfb_1_1_profile_a486c8d589a51ca28dcef95d05aa04dce}{\hyperlink{structfb_1_1_date}{Date} const \& {\bfseries get\+\_\+birthday} () const }\label{classfb_1_1_profile_a486c8d589a51ca28dcef95d05aa04dce}
+
+\item 
+\hypertarget{classfb_1_1_profile_a9f2b34badc4cce972e6d47e5a9be508b}{void {\bfseries set\+\_\+birthday} (\hyperlink{structfb_1_1_date}{Date} const \&birthday)}\label{classfb_1_1_profile_a9f2b34badc4cce972e6d47e5a9be508b}
+
+\item 
+\hypertarget{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}{virtual \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$ \hyperlink{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}{heap\+\_\+copy} ()}\label{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}
+
+\begin{DoxyCompactList}\small\item\em return copy of the node to the heap.  used as a convenience method for copying nodes without knowing their concrete type \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Facebooklet profile class. 
+
+Represents a user
+
+
+\begin{DoxyParams}{Parameters}
+{\em db} & pointer to the database which the object will be added to \\
+\hline
+{\em name} & user name \\
+\hline
+{\em birthday} & user birthday \\
+\hline
+{\em time} & time of creation. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classfb_1_1_profile_a657f6cab3f2caee6fc4b9c8758a711b3}{\index{fb\+::\+Profile@{fb\+::\+Profile}!describe@{describe}}
+\index{describe@{describe}!fb\+::\+Profile@{fb\+::\+Profile}}
+\subsubsection[{describe}]{\setlength{\rightskip}{0pt plus 5cm}string const fb\+::\+Profile\+::describe (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfb_1_1_profile_a657f6cab3f2caee6fc4b9c8758a711b3}
+
+
+get node's description. 
+
+Used for printing to std\+::ostream 
+
+Implements \hyperlink{structfb_1_1_i_face_booklet_node_a4ccb08dfa3ae0af8836cec58f8439adc}{fb\+::\+I\+Face\+Booklet\+Node}.
+
+\hypertarget{classfb_1_1_profile_abd95cad4820c261601b20372f634bd2a}{\index{fb\+::\+Profile@{fb\+::\+Profile}!get\+\_\+friend@{get\+\_\+friend}}
+\index{get\+\_\+friend@{get\+\_\+friend}!fb\+::\+Profile@{fb\+::\+Profile}}
+\subsubsection[{get\+\_\+friend}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+Face\+Booklet\+Node} const $\ast$ fb\+::\+Profile\+::get\+\_\+friend (
+\begin{DoxyParamCaption}
+\item[{id\+\_\+t}]{id}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfb_1_1_profile_abd95cad4820c261601b20372f634bd2a}
+
+
+retrieves a friend by id number. 
+
+const method
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id of friend \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to friend node, or if id is not a friend, a nullptr 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{structfb_1_1_i_face_booklet_node_a3a1b982ac4239e23c2204c7746dc90f0}{fb\+::\+I\+Face\+Booklet\+Node}.
+
+\hypertarget{classfb_1_1_profile_a6c9f78b9cb0c1e30d22d17265736a956}{\index{fb\+::\+Profile@{fb\+::\+Profile}!get\+\_\+friend@{get\+\_\+friend}}
+\index{get\+\_\+friend@{get\+\_\+friend}!fb\+::\+Profile@{fb\+::\+Profile}}
+\subsubsection[{get\+\_\+friend}]{\setlength{\rightskip}{0pt plus 5cm}{\bf I\+Face\+Booklet\+Node} $\ast$ fb\+::\+Profile\+::get\+\_\+friend (
+\begin{DoxyParamCaption}
+\item[{id\+\_\+t}]{fr\+\_\+id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfb_1_1_profile_a6c9f78b9cb0c1e30d22d17265736a956}
+
+
+retrieves a friend by id number. const method. 
+
+const method
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id of friend \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to friend node, or if id is not a friend, a nullptr 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{structfb_1_1_i_face_booklet_node_ae78da353e70e25f3fac8976618bfcde8}{fb\+::\+I\+Face\+Booklet\+Node}.
+
+\hypertarget{classfb_1_1_profile_aee2df153f7923d0d5c24eb3c11dfff67}{\index{fb\+::\+Profile@{fb\+::\+Profile}!get\+\_\+id@{get\+\_\+id}}
+\index{get\+\_\+id@{get\+\_\+id}!fb\+::\+Profile@{fb\+::\+Profile}}
+\subsubsection[{get\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}const id\+\_\+t fb\+::\+Profile\+::get\+\_\+id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfb_1_1_profile_aee2df153f7923d0d5c24eb3c11dfff67}
+
+
+getter for booklet's id tag 
+
+\begin{DoxyReturn}{Returns}
+id value 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{structfb_1_1_i_face_booklet_node_a651a6fb7445f8d2c046066c1d381f424}{fb\+::\+I\+Face\+Booklet\+Node}.
+
+\hypertarget{classfb_1_1_profile_a5f74385d661e8923dd5e66faf35247d7}{\index{fb\+::\+Profile@{fb\+::\+Profile}!has\+\_\+friend@{has\+\_\+friend}}
+\index{has\+\_\+friend@{has\+\_\+friend}!fb\+::\+Profile@{fb\+::\+Profile}}
+\subsubsection[{has\+\_\+friend}]{\setlength{\rightskip}{0pt plus 5cm}const bool fb\+::\+Profile\+::has\+\_\+friend (
+\begin{DoxyParamCaption}
+\item[{id\+\_\+t}]{id}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfb_1_1_profile_a5f74385d661e8923dd5e66faf35247d7}
+
+
+indicates if a node has a given friend. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id key for friend\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if id corresponds to the node's friend 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{structfb_1_1_i_face_booklet_node_a2692d3ad9e903bd545c7074c710e5cdc}{fb\+::\+I\+Face\+Booklet\+Node}.
+
+\hypertarget{classfb_1_1_profile_abe318da2aba42f412dc7373057aa983b}{\index{fb\+::\+Profile@{fb\+::\+Profile}!has\+\_\+friend@{has\+\_\+friend}}
+\index{has\+\_\+friend@{has\+\_\+friend}!fb\+::\+Profile@{fb\+::\+Profile}}
+\subsubsection[{has\+\_\+friend}]{\setlength{\rightskip}{0pt plus 5cm}const bool fb\+::\+Profile\+::has\+\_\+friend (
+\begin{DoxyParamCaption}
+\item[{{\bf I\+Face\+Booklet\+Node} $\ast$}]{node}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfb_1_1_profile_abe318da2aba42f412dc7373057aa983b}
+
+
+indicates if a node has a given friend. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & pointer to a \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if node corresponds to the node's friend 
+\end{DoxyReturn}
+
+
+Implements \hyperlink{structfb_1_1_i_face_booklet_node_af821de82c96e235108ca909a92838dc1}{fb\+::\+I\+Face\+Booklet\+Node}.
+
+\hypertarget{classfb_1_1_profile_a8fe32885a03ac7c92675ede58a230f34}{\index{fb\+::\+Profile@{fb\+::\+Profile}!set\+\_\+id@{set\+\_\+id}}
+\index{set\+\_\+id@{set\+\_\+id}!fb\+::\+Profile@{fb\+::\+Profile}}
+\subsubsection[{set\+\_\+id}]{\setlength{\rightskip}{0pt plus 5cm}void fb\+::\+Profile\+::set\+\_\+id (
+\begin{DoxyParamCaption}
+\item[{id\+\_\+t}]{id}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{classfb_1_1_profile_a8fe32885a03ac7c92675ede58a230f34}
+
+
+setter for booklet's id tag. 
+
+this should be used with caution, as all other relationships depend on node ids. It is probably best to handle id modifications in the host database instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & id number to set \\
+\hline
+\end{DoxyParams}
+
+
+Implements \hyperlink{structfb_1_1_i_face_booklet_node_a944a07a514d6c88414c533dc7be3193d}{fb\+::\+I\+Face\+Booklet\+Node}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/\hyperlink{_f_b_profile_8h}{F\+B\+Profile.\+h}\item 
+/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/F\+B\+Profile.\+cc\end{DoxyCompactItemize}
