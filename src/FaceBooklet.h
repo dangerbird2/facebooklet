@@ -72,17 +72,25 @@ public:
   FaceBooklet(FaceBooklet &book) = delete;
   virtual ~FaceBooklet();
 
+  void main_menu();
+
   /**
    * @brief runs the program
    * @details [long description]
    */
   void run();
 
+  bool is_running() const;
+
+  void set_running(bool running);
+
   Database *get_db();
 
 private:
   Database db;
+
   Prompter prompter;
+  bool running = true;
 
 };
 

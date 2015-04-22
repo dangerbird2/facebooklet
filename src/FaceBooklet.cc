@@ -15,7 +15,7 @@ FaceBooklet::FaceBooklet() : db(Database())
 
 FaceBooklet::~FaceBooklet() { }
 
-void FaceBooklet::run() { }
+
 
 
 std::ostream &operator<<(std::ostream &os, const IFaceBookletNode &node)
@@ -35,6 +35,56 @@ FaceBooklet::FaceBooklet(Database &&db)
 }
 
 Database *FaceBooklet::get_db() { return &db; }
+
+
+void FaceBooklet::run()
+{
+  cout << "Welcome to facebooklet!\n\n";
+  running = true;
+  while (running) {
+
+    main_menu();
+
+  }
+}
+
+void FaceBooklet::main_menu()
+{
+  cout << "Please choose an option";
+  vector<string> choices = {"create a new profile",
+                            "log into a profile",
+                            "delete a profile",
+                            "quit"};
+  auto res = prompter.prompt_choice(cin, choices);
+  if (res < choices.size()) {
+    cout << "you chose " << choices[res] << "\n";
+    switch (res) {
+      case (3): {
+        cout << "goodbye!\n";
+        running = false;
+        break;
+      }
+      default: {
+      }
+    }
+
+
+  } else {
+    cout << "please chose valid option\n";
+  }
+
+}
+
+
+void FaceBooklet::set_running(bool running)
+{
+  this->running = running;
+}
+
+bool FaceBooklet::is_running() const
+{
+  return running;
+}
 
 
 /*++++++++++++++++++++++++++++++++++++++++
@@ -114,5 +164,6 @@ size_t Prompter::prompt_choice(std::istream &in,
 
   return choice;
 }
+
 
 } // fb
