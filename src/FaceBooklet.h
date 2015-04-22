@@ -30,42 +30,16 @@ class Prompter {
 public:
   Prompter(Database *db = nullptr) : db(db) { }
 
-  /**
-   * @brief generates a new profile
-   * 
-   * @param db pointer to the database object
-   * @return a pointer to the new profile, added
-   * to the database
-   */
-  Profile *create_profile(std::istream &in)
-  {
-    if (!db) { return nullptr; }
-    auto t = time(NULL);
-    std::string name;
-    int m = -1;
-    int y = -1;
-    int d = -1;
-    bool res = false;
+  Profile *create_profile(std::istream &in);
 
-    const int n = 5;
-    for (int i = 0; i < n && !res; ++i) {
-      std::cout << "what is your name?->";
-      in >> name;
-      if (name == "") {
-        std::cout << "please enter a name" << std::endl;
-      } else {
-        std::cout << "your name is" << name << std::endl;
-        res = true;
-      }
-    }
-    res = false;
+  Profile *prompt_username(std::istream &in);
+  NodePost *prompt_post(std::istream &in);
 
+  Profile *prompt_finduser(std::istream &in);
 
+  Profile *prompt_userid(std::istream &in);
 
-    auto bday = Date(d, static_cast<Month>(m), y);
-    auto profile = db->insert_profile(name, t, bday);
-    return profile;
-  }
+  size_t prompt_choice(std::istream &in, std::vector<std::string> const &choices);
 
   Database *db;
 };

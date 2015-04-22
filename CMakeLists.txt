@@ -21,6 +21,8 @@ set(FACE_HDR
     src/NodeData.h
     src/utils.h)
 
+set(FACE_EXEC_SRC src/main.cc)
+
 file(COPY ${FACE_HDR}
     DESTINATION ${CMAKE_BINARY_DIR}/include/facebooklet)
 
@@ -60,3 +62,7 @@ target_link_libraries(facebooklet_tests
     gtest_main
     gmock
     gmock_main)
+
+add_executable(facebooklet_exec ${FACE_EXEC_SRC})
+target_link_libraries(facebooklet_exec
+    facebooklet)
