@@ -28,7 +28,7 @@ namespace fb {
  */
 struct NodePost {
   NodePost(const std::string &text, time_t t) :
-      text(text), time(t) { }
+      text(std::string(text)), time(t) { }
 
   std::string text;
   time_t time;
@@ -39,7 +39,7 @@ struct NodePost {
 /**
  * @brief the class containing a node's basic information and
  * post history.
- * @details all IFaceBookletNode types use this class
+ * @detail all IFaceBookletNode types use this class
  * for storing object and post history data. (consider how
  * a Facebook wall is functionally identical for people, groups, and
  * pages.)
@@ -61,7 +61,13 @@ public:
    */
   NodeData(std::string const &name,
            time_t creation_time = 0,
-           std::vector <NodePost> const &posts = {});
+           std::vector<NodePost> const &posts = {});
+
+  NodeData(NodeData const &data);
+
+  NodeData operator=(NodeData const &data);
+
+  ~NodeData() { }
 
   /*
    * name getter/setter property
@@ -73,9 +79,10 @@ public:
   /*
    * posts getter/setter property
    */
-  std::vector <NodePost> const &get_posts() const;
+  std::vector<NodePost> const &get_posts() const;
+  std::vector<NodePost> &get_posts() {return posts;}
 
-  void set_posts(std::vector <NodePost> const &posts);
+  void set_posts(std::vector<NodePost> const &posts);
 
 
   /**
@@ -97,7 +104,7 @@ public:
 
 private:
   std::string name;
-  std::vector <NodePost> posts;
+  std::vector<NodePost> posts;
   time_t time;
 };
 

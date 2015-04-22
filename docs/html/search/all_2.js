@@ -1,9 +1,7 @@
-var searchData =
-    [
-        ['database', ['Database', ['../classfb_1_1_database.html', 1, 'fb']]],
-        ['database', ['Database', ['../classfb_1_1_database.html#a6ea6c4bc9187969306785b351891a876', 1, 'fb::Database']]],
-        ['database_2eh', ['Database.h', ['../_database_8h.html', 1, '']]],
-        ['date', ['Date', ['../structfb_1_1_date.html', 1, 'fb']]],
-        ['date_2eh', ['Date.h', ['../_date_8h.html', 1, '']]],
-        ['describe', ['describe', ['../classfb_1_1_profile.html#a657f6cab3f2caee6fc4b9c8758a711b3', 1, 'fb::Profile::describe()'], ['../structfb_1_1_i_face_booklet_node.html#a4ccb08dfa3ae0af8836cec58f8439adc', 1, 'fb::IFaceBookletNode::describe()']]]
-    ];
+var searchData=
+[
+  ['facebooklet',['FaceBooklet',['../classfb_1_1_face_booklet.html',1,'fb']]],
+  ['facebooklet',['FaceBooklet',['../classfb_1_1_face_booklet.html#ab8c98ceebb70c063a3f2f26247fddfdf',1,'fb::FaceBooklet::FaceBooklet()'],['../classfb_1_1_face_booklet.html#a2a3a9acd18e96c53a7d2cb1ce83dd092',1,'fb::FaceBooklet::FaceBooklet(Database &amp;&amp;db)'],['../classfb_1_1_face_booklet.html#a39051b85601de9be1ab3467bfe2dc5bb',1,'fb::FaceBooklet::FaceBooklet(FaceBooklet &amp;book)=delete']]],
+  ['facebooklet_2eh',['FaceBooklet.h',['../_face_booklet_8h.html',1,'']]],
+  ['fbprofile_2eh',['FBProfile.h',['../_f_b_profile_8h.html',1,'']]]
+];

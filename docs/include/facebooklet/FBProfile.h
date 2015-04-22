@@ -7,8 +7,9 @@
 #ifndef FB_PROFILE_H
 #define FB_PROFILE_H
 
-#include "INode.h"
+#include "interfaces.h"
 #include "Database.h"
+#include "utils.h"
 #include "Date.h"
 #include <set>
 #include <map>
@@ -28,7 +29,7 @@ namespace fb {
 class Profile : public IFaceBookletNode {
 public:
 
-  Profile(Database *db, std::string const &name, Date const &birthday = Date(), time_t time = 0);
+  Profile(Database *db, std::string const &name, time_t time = 0, Date birthday = Date());
 
   Profile();
 
@@ -61,7 +62,9 @@ public:
    */
   std::string const describe() const;
 
-  /**
+  virtual IFaceBookletNode *heap_copy();
+
+/**
    * @brief retrieves a friend by id number.
    * @details const method
    *
@@ -82,14 +85,11 @@ public:
   IFaceBookletNode *get_friend(id_t fr_id);
 
   void add_friend(IFaceBookletNode *fr);
-
   void remove_friend(id_t id);
 
 
   NodeData &get_data();
-
   NodeData const &get_data() const;
-
   void set_data(NodeData const &data);
 
   /**
@@ -108,16 +108,8 @@ public:
    */
   const bool has_friend(IFaceBookletNode *node) const;
 
-  Date const &get_birthday() const;
+  virtual std::vector<id_t> get_friend_ids() const;
 
-  void set_birthday(Date const &birthday);
-
-  /**
-   * @brief return copy of the node to the heap.
-   * @detail used as a convenience method for copying nodes without knowing
-   * their concrete type
-   */
-  virtual IFaceBookletNode *heap_copy();
 
 private:
   /**
@@ -125,9 +117,9 @@ private:
    */
   id_t id;
 
+  Date birthday;
 
   NodeData data;
-  Date birthday;
 
   /**
    * pointer to database object
@@ -140,7 +132,6 @@ private:
    */
   std::map<id_t, bool> friends;
 };
-
 
 } // fb
 

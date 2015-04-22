@@ -19,7 +19,7 @@ Inheritance diagram for fb\+:\+:Profile\+:\begin{figure}[H]
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classfb_1_1_profile_a42a0625bef011a0280735db1340e7235}{{\bfseries Profile} (\hyperlink{classfb_1_1_database}{Database} $\ast$db, std\+::string const \&name, \hyperlink{structfb_1_1_date}{Date} const \&birthday=\hyperlink{structfb_1_1_date}{Date}(), time\+\_\+t time=0)}\label{classfb_1_1_profile_a42a0625bef011a0280735db1340e7235}
+\hypertarget{classfb_1_1_profile_a1a203e0e22defdebb348014821664474}{{\bfseries Profile} (\hyperlink{classfb_1_1_database}{Database} $\ast$db, std\+::string const \&name, time\+\_\+t time=0, \hyperlink{structfb_1_1_date}{Date} birthday=\hyperlink{structfb_1_1_date}{Date}())}\label{classfb_1_1_profile_a1a203e0e22defdebb348014821664474}
 
 \item 
 const id\+\_\+t \hyperlink{classfb_1_1_profile_aee2df153f7923d0d5c24eb3c11dfff67}{get\+\_\+id} () const 
@@ -28,6 +28,9 @@ void \hyperlink{classfb_1_1_profile_a8fe32885a03ac7c92675ede58a230f34}{set\+\_\+
 \begin{DoxyCompactList}\small\item\em setter for booklet's id tag. \end{DoxyCompactList}\item 
 std\+::string const \hyperlink{classfb_1_1_profile_a657f6cab3f2caee6fc4b9c8758a711b3}{describe} () const 
 \begin{DoxyCompactList}\small\item\em get node's description. \end{DoxyCompactList}\item 
+\hypertarget{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}{virtual \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$ \hyperlink{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}{heap\+\_\+copy} ()}\label{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}
+
+\begin{DoxyCompactList}\small\item\em returns a copy of the node allocated via new() \end{DoxyCompactList}\item 
 \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} const $\ast$ \hyperlink{classfb_1_1_profile_abd95cad4820c261601b20372f634bd2a}{get\+\_\+friend} (id\+\_\+t id) const 
 \begin{DoxyCompactList}\small\item\em retrieves a friend by id number. \end{DoxyCompactList}\item 
 \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$ \hyperlink{classfb_1_1_profile_a6c9f78b9cb0c1e30d22d17265736a956}{get\+\_\+friend} (id\+\_\+t fr\+\_\+id)
@@ -51,15 +54,9 @@ const bool \hyperlink{classfb_1_1_profile_a5f74385d661e8923dd5e66faf35247d7}{has
 \begin{DoxyCompactList}\small\item\em indicates if a node has a given friend. \end{DoxyCompactList}\item 
 const bool \hyperlink{classfb_1_1_profile_abe318da2aba42f412dc7373057aa983b}{has\+\_\+friend} (\hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$node) const 
 \begin{DoxyCompactList}\small\item\em indicates if a node has a given friend. \end{DoxyCompactList}\item 
-\hypertarget{classfb_1_1_profile_a486c8d589a51ca28dcef95d05aa04dce}{\hyperlink{structfb_1_1_date}{Date} const \& {\bfseries get\+\_\+birthday} () const }\label{classfb_1_1_profile_a486c8d589a51ca28dcef95d05aa04dce}
+\hypertarget{classfb_1_1_profile_a0a6daeea143af61c84f4779c9bac586b}{virtual std\+::vector$<$ id\+\_\+t $>$ {\bfseries get\+\_\+friend\+\_\+ids} () const }\label{classfb_1_1_profile_a0a6daeea143af61c84f4779c9bac586b}
 
-\item 
-\hypertarget{classfb_1_1_profile_a9f2b34badc4cce972e6d47e5a9be508b}{void {\bfseries set\+\_\+birthday} (\hyperlink{structfb_1_1_date}{Date} const \&birthday)}\label{classfb_1_1_profile_a9f2b34badc4cce972e6d47e5a9be508b}
-
-\item 
-\hypertarget{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}{virtual \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$ \hyperlink{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}{heap\+\_\+copy} ()}\label{classfb_1_1_profile_a586b14f04694abe0860be3e50e6fa706}
-
-\begin{DoxyCompactList}\small\item\em return copy of the node to the heap.  used as a convenience method for copying nodes without knowing their concrete type \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -236,5 +233,5 @@ Implements \hyperlink{structfb_1_1_i_face_booklet_node_a944a07a514d6c88414c533dc
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/\hyperlink{_f_b_profile_8h}{F\+B\+Profile.\+h}\item 
-/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/F\+B\+Profile.\+cc\end{DoxyCompactItemize}
+/\+Users/\+Shea/cmps/facebooklet/src/\hyperlink{_f_b_profile_8h}{F\+B\+Profile.\+h}\item 
+/\+Users/\+Shea/cmps/facebooklet/src/F\+B\+Profile.\+cc\end{DoxyCompactItemize}

@@ -8,7 +8,7 @@ interface class for \hyperlink{classfb_1_1_face_booklet}{Face\+Booklet} nodes
 
 
 
-{\ttfamily \#include $<$I\+Node.\+h$>$}
+{\ttfamily \#include $<$interfaces.\+h$>$}
 
 Inheritance diagram for fb\+:\+:I\+Face\+Booklet\+Node\+:\begin{figure}[H]
 \begin{center}
@@ -25,7 +25,7 @@ Inheritance diagram for fb\+:\+:I\+Face\+Booklet\+Node\+:\begin{figure}[H]
 virtual const id\+\_\+t \hyperlink{structfb_1_1_i_face_booklet_node_a651a6fb7445f8d2c046066c1d381f424}{get\+\_\+id} () const =0
 \begin{DoxyCompactList}\small\item\em getter for booklet's id tag \end{DoxyCompactList}\item 
 virtual void \hyperlink{structfb_1_1_i_face_booklet_node_a944a07a514d6c88414c533dc7be3193d}{set\+\_\+id} (id\+\_\+t id)=0
-\begin{DoxyCompactList}\small\item\em setter for booklet's id tag. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em setter for booklet's id tag.  this should be used with caution, as all other relationships depend on node ids. It is probably best to handle id modifications in the host database instance. \end{DoxyCompactList}\item 
 \hypertarget{structfb_1_1_i_face_booklet_node_acfe552a2e1c8b67bb2ffeb22e319251d}{virtual \hyperlink{classfb_1_1_node_data}{Node\+Data} \& {\bfseries get\+\_\+data} ()=0}\label{structfb_1_1_i_face_booklet_node_acfe552a2e1c8b67bb2ffeb22e319251d}
 
 \item 
@@ -35,12 +35,13 @@ virtual void \hyperlink{structfb_1_1_i_face_booklet_node_a944a07a514d6c88414c533
 \hypertarget{structfb_1_1_i_face_booklet_node_a715b1a3ece12f6cf4fcb115c0cd6db5e}{virtual void {\bfseries set\+\_\+data} (\hyperlink{classfb_1_1_node_data}{Node\+Data} const \&data)=0}\label{structfb_1_1_i_face_booklet_node_a715b1a3ece12f6cf4fcb115c0cd6db5e}
 
 \item 
-virtual std\+::string const \hyperlink{structfb_1_1_i_face_booklet_node_a4ccb08dfa3ae0af8836cec58f8439adc}{describe} () const =0
-\begin{DoxyCompactList}\small\item\em get node's description. \end{DoxyCompactList}\item 
+\hypertarget{structfb_1_1_i_face_booklet_node_a4ccb08dfa3ae0af8836cec58f8439adc}{virtual std\+::string const \hyperlink{structfb_1_1_i_face_booklet_node_a4ccb08dfa3ae0af8836cec58f8439adc}{describe} () const =0}\label{structfb_1_1_i_face_booklet_node_a4ccb08dfa3ae0af8836cec58f8439adc}
+
+\begin{DoxyCompactList}\small\item\em get node's description.  Used for printing to std\+::ostream \end{DoxyCompactList}\item 
 virtual \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$ \hyperlink{structfb_1_1_i_face_booklet_node_ae78da353e70e25f3fac8976618bfcde8}{get\+\_\+friend} (id\+\_\+t id)=0
-\begin{DoxyCompactList}\small\item\em retrieves a friend by id number. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em retrieves a friend by id number.  const method \end{DoxyCompactList}\item 
 virtual \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} const $\ast$ \hyperlink{structfb_1_1_i_face_booklet_node_a3a1b982ac4239e23c2204c7746dc90f0}{get\+\_\+friend} (id\+\_\+t id) const =0
-\begin{DoxyCompactList}\small\item\em retrieves a friend by id number. const method. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em retrieves a friend by id number. const method.  const method \end{DoxyCompactList}\item 
 virtual const bool \hyperlink{structfb_1_1_i_face_booklet_node_a2692d3ad9e903bd545c7074c710e5cdc}{has\+\_\+friend} (id\+\_\+t id) const =0
 \begin{DoxyCompactList}\small\item\em indicates if a node has a given friend. \end{DoxyCompactList}\item 
 virtual const bool \hyperlink{structfb_1_1_i_face_booklet_node_af821de82c96e235108ca909a92838dc1}{has\+\_\+friend} (\hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$node) const =0
@@ -49,6 +50,9 @@ virtual const bool \hyperlink{structfb_1_1_i_face_booklet_node_af821de82c96e2351
 
 \begin{DoxyCompactList}\small\item\em add a friend to node's friend list \end{DoxyCompactList}\item 
 \hypertarget{structfb_1_1_i_face_booklet_node_a7cc6a24cc5863b5d095369faa2066042}{virtual void {\bfseries remove\+\_\+friend} (id\+\_\+t id)=0}\label{structfb_1_1_i_face_booklet_node_a7cc6a24cc5863b5d095369faa2066042}
+
+\item 
+\hypertarget{structfb_1_1_i_face_booklet_node_a54a83c2e877235c2bf6ed3f66ab52177}{virtual std\+::vector$<$ id\+\_\+t $>$ {\bfseries get\+\_\+friend\+\_\+ids} () const =0}\label{structfb_1_1_i_face_booklet_node_a54a83c2e877235c2bf6ed3f66ab52177}
 
 \end{DoxyCompactItemize}
 \subsection*{Friends}
@@ -66,21 +70,6 @@ virtual const bool \hyperlink{structfb_1_1_i_face_booklet_node_af821de82c96e2351
 interface class for \hyperlink{classfb_1_1_face_booklet}{Face\+Booklet} nodes 
 
 \subsection{Member Function Documentation}
-\hypertarget{structfb_1_1_i_face_booklet_node_a4ccb08dfa3ae0af8836cec58f8439adc}{\index{fb\+::\+I\+Face\+Booklet\+Node@{fb\+::\+I\+Face\+Booklet\+Node}!describe@{describe}}
-\index{describe@{describe}!fb\+::\+I\+Face\+Booklet\+Node@{fb\+::\+I\+Face\+Booklet\+Node}}
-\subsubsection[{describe}]{\setlength{\rightskip}{0pt plus 5cm}virtual std\+::string const fb\+::\+I\+Face\+Booklet\+Node\+::describe (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{structfb_1_1_i_face_booklet_node_a4ccb08dfa3ae0af8836cec58f8439adc}
-
-
-get node's description. 
-
-Used for printing to std\+::ostream 
-
-Implemented in \hyperlink{classfb_1_1_profile_a657f6cab3f2caee6fc4b9c8758a711b3}{fb\+::\+Profile}.
-
 \hypertarget{structfb_1_1_i_face_booklet_node_ae78da353e70e25f3fac8976618bfcde8}{\index{fb\+::\+I\+Face\+Booklet\+Node@{fb\+::\+I\+Face\+Booklet\+Node}!get\+\_\+friend@{get\+\_\+friend}}
 \index{get\+\_\+friend@{get\+\_\+friend}!fb\+::\+I\+Face\+Booklet\+Node@{fb\+::\+I\+Face\+Booklet\+Node}}
 \subsubsection[{get\+\_\+friend}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf I\+Face\+Booklet\+Node}$\ast$ fb\+::\+I\+Face\+Booklet\+Node\+::get\+\_\+friend (
@@ -90,9 +79,7 @@ Implemented in \hyperlink{classfb_1_1_profile_a657f6cab3f2caee6fc4b9c8758a711b3}
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{structfb_1_1_i_face_booklet_node_ae78da353e70e25f3fac8976618bfcde8}
 
 
-retrieves a friend by id number. 
-
-const method
+retrieves a friend by id number.  const method 
 
 
 \begin{DoxyParams}{Parameters}
@@ -115,9 +102,7 @@ Implemented in \hyperlink{classfb_1_1_profile_a6c9f78b9cb0c1e30d22d17265736a956}
 ) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{structfb_1_1_i_face_booklet_node_a3a1b982ac4239e23c2204c7746dc90f0}
 
 
-retrieves a friend by id number. const method. 
-
-const method
+retrieves a friend by id number. const method.  const method 
 
 
 \begin{DoxyParams}{Parameters}
@@ -204,9 +189,7 @@ Implemented in \hyperlink{classfb_1_1_profile_abe318da2aba42f412dc7373057aa983b}
 )\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{structfb_1_1_i_face_booklet_node_a944a07a514d6c88414c533dc7be3193d}
 
 
-setter for booklet's id tag. 
-
-this should be used with caution, as all other relationships depend on node ids. It is probably best to handle id modifications in the host database instance.
+setter for booklet's id tag.  this should be used with caution, as all other relationships depend on node ids. It is probably best to handle id modifications in the host database instance. 
 
 
 \begin{DoxyParams}{Parameters}
@@ -221,4 +204,4 @@ Implemented in \hyperlink{classfb_1_1_profile_a8fe32885a03ac7c92675ede58a230f34}
 
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/\hyperlink{_i_node_8h}{I\+Node.\+h}\end{DoxyCompactItemize}
+/\+Users/\+Shea/cmps/facebooklet/src/\hyperlink{interfaces_8h}{interfaces.\+h}\end{DoxyCompactItemize}

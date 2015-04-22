@@ -1,5 +1,5 @@
-\hypertarget{classfb_1_1_prompter}{\section{fb\+:\+:Prompter$<$ I\+S\+T\+R\+E\+A\+M\+\_\+\+T $>$ Class Template Reference}
-\label{classfb_1_1_prompter}\index{fb\+::\+Prompter$<$ I\+S\+T\+R\+E\+A\+M\+\_\+\+T $>$@{fb\+::\+Prompter$<$ I\+S\+T\+R\+E\+A\+M\+\_\+\+T $>$}}
+\hypertarget{classfb_1_1_prompter}{\section{fb\+:\+:Prompter Class Reference}
+\label{classfb_1_1_prompter}\index{fb\+::\+Prompter@{fb\+::\+Prompter}}
 }
 
 
@@ -13,55 +13,38 @@ template class for prompting user for data
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classfb_1_1_prompter_af0270c9ee1234d8ed892e4137c3e225a}{{\bfseries Prompter} (I\+S\+T\+R\+E\+A\+M\+\_\+\+T \&in)}\label{classfb_1_1_prompter_af0270c9ee1234d8ed892e4137c3e225a}
+\hypertarget{classfb_1_1_prompter_a7dbcc71b2ed5e9db623b5f9df7642b19}{{\bfseries Prompter} (\hyperlink{classfb_1_1_database}{Database} $\ast$db=nullptr)}\label{classfb_1_1_prompter_a7dbcc71b2ed5e9db623b5f9df7642b19}
 
 \item 
-\hyperlink{classfb_1_1_profile}{Profile} $\ast$ \hyperlink{classfb_1_1_prompter_acc93a31b8d47be2358ff044cb2ee9521}{create\+\_\+profile} (\hyperlink{classfb_1_1_database}{Database} $\ast$db)
-\begin{DoxyCompactList}\small\item\em generates a new profile \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hypertarget{classfb_1_1_prompter_a3f86d0c8f58c34de5d49709f5bae7c42}{\hyperlink{classfb_1_1_profile}{Profile} $\ast$ {\bfseries create\+\_\+profile} (std\+::istream \&in)}\label{classfb_1_1_prompter_a3f86d0c8f58c34de5d49709f5bae7c42}
+
+\item 
+\hypertarget{classfb_1_1_prompter_aebfce67c651d96418fb616d03f0e3049}{\hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$ {\bfseries prompt\+\_\+username} (std\+::istream \&in)}\label{classfb_1_1_prompter_aebfce67c651d96418fb616d03f0e3049}
+
+\item 
+\hypertarget{classfb_1_1_prompter_a1e287db4e05c6cb7acfa92a2a1f79d5c}{\hyperlink{structfb_1_1_node_post}{Node\+Post} $\ast$ {\bfseries prompt\+\_\+post} (std\+::istream \&in)}\label{classfb_1_1_prompter_a1e287db4e05c6cb7acfa92a2a1f79d5c}
+
+\item 
+\hypertarget{classfb_1_1_prompter_a1a60c2120c10e632a2a7f1128250b7f4}{void {\bfseries make\+\_\+post} (std\+::istream \&in, \hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$active\+\_\+profile)}\label{classfb_1_1_prompter_a1a60c2120c10e632a2a7f1128250b7f4}
+
+\item 
+\hypertarget{classfb_1_1_prompter_a18da30617871ddfb82f67d0a2e908a7a}{{\footnotesize template$<$typename T $>$ }\\size\+\_\+t {\bfseries prompt\+\_\+choice} (std\+::istream \&in, std\+::vector$<$ T $>$ const \&choices)}\label{classfb_1_1_prompter_a18da30617871ddfb82f67d0a2e908a7a}
+
+\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classfb_1_1_prompter_a2f77a9922842a56959b65fecc5d11e0a}{I\+S\+T\+R\+E\+A\+M\+\_\+\+T \& {\bfseries in}}\label{classfb_1_1_prompter_a2f77a9922842a56959b65fecc5d11e0a}
+\hypertarget{classfb_1_1_prompter_ac89147193a8897786a08cf29ba6435d1}{\hyperlink{classfb_1_1_database}{Database} $\ast$ {\bfseries db}}\label{classfb_1_1_prompter_ac89147193a8897786a08cf29ba6435d1}
 
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
-\subsubsection*{template$<$typename I\+S\+T\+R\+E\+A\+M\+\_\+\+T = std\+::istream$>$class fb\+::\+Prompter$<$ I\+S\+T\+R\+E\+A\+M\+\_\+\+T $>$}
-
 template class for prompting user for data 
 
-Implemented as a template class for generic i/o streams. Allows automated testing of prompter with string streams
+Implemented as a template class for generic i/o streams. Allows automated testing of prompter with string streams 
 
-
-\begin{DoxyTemplParams}{Template Parameters}
-{\em I\+S\+T\+R\+E\+A\+M\+\_\+\+T=std\+::istream} & an input stream S\+T\+L type \\
-\hline
-\end{DoxyTemplParams}
-
-
-\subsection{Member Function Documentation}
-\hypertarget{classfb_1_1_prompter_acc93a31b8d47be2358ff044cb2ee9521}{\index{fb\+::\+Prompter@{fb\+::\+Prompter}!create\+\_\+profile@{create\+\_\+profile}}
-\index{create\+\_\+profile@{create\+\_\+profile}!fb\+::\+Prompter@{fb\+::\+Prompter}}
-\subsubsection[{create\+\_\+profile}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename I\+S\+T\+R\+E\+A\+M\+\_\+\+T = std\+::istream$>$ {\bf Profile}$\ast$ {\bf fb\+::\+Prompter}$<$ I\+S\+T\+R\+E\+A\+M\+\_\+\+T $>$\+::create\+\_\+profile (
-\begin{DoxyParamCaption}
-\item[{{\bf Database} $\ast$}]{db}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classfb_1_1_prompter_acc93a31b8d47be2358ff044cb2ee9521}
-
-
-generates a new profile 
-
-
-\begin{DoxyParams}{Parameters}
-{\em db} & pointer to the database object \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a pointer to the new profile, added to the database 
-\end{DoxyReturn}
-
-
-The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/\hyperlink{_face_booklet_8h}{Face\+Booklet.\+h}\end{DoxyCompactItemize}
+/\+Users/\+Shea/cmps/facebooklet/src/\hyperlink{_face_booklet_8h}{Face\+Booklet.\+h}\item 
+/\+Users/\+Shea/cmps/facebooklet/src/Face\+Booklet.\+cc\end{DoxyCompactItemize}

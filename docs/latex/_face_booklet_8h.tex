@@ -1,26 +1,45 @@
-\hypertarget{_face_booklet_8h}{\section{/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/\+Face\+Booklet.h File Reference}
-\label{_face_booklet_8h}\index{/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/\+Face\+Booklet.\+h@{/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/\+Face\+Booklet.\+h}}
+\hypertarget{_face_booklet_8h}{\section{/\+Users/\+Shea/cmps/facebooklet/src/\+Face\+Booklet.h File Reference}
+\label{_face_booklet_8h}\index{/\+Users/\+Shea/cmps/facebooklet/src/\+Face\+Booklet.\+h@{/\+Users/\+Shea/cmps/facebooklet/src/\+Face\+Booklet.\+h}}
 }
 
 
 defines main Facebooklet class  
 
 
-{\ttfamily \#include \char`\"{}Database.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}F\+B\+Profile.\+h\char`\"{}}\\*
-{\ttfamily \#include $<$memory$>$}\\*
 {\ttfamily \#include $<$iostream$>$}\\*
-{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include \char`\"{}F\+B\+Profile.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Date.\+h\char`\"{}}\\*
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classfb_1_1_prompter}{fb\+::\+Prompter$<$ I\+S\+T\+R\+E\+A\+M\+\_\+\+T $>$}
+class \hyperlink{classfb_1_1_prompter}{fb\+::\+Prompter}
 \begin{DoxyCompactList}\small\item\em template class for prompting user for data \end{DoxyCompactList}\item 
 class \hyperlink{classfb_1_1_face_booklet}{fb\+::\+Face\+Booklet}
 \begin{DoxyCompactList}\small\item\em main function for \hyperlink{classfb_1_1_face_booklet}{Face\+Booklet} program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespacefb_a1d613b526849fecad2e0906c77654e23}{enum {\bfseries Menu\+Opt} \{ \\*
+{\bfseries create\+Profile}, 
+{\bfseries login}, 
+{\bfseries view\+Profile}, 
+{\bfseries quit}, 
+\\*
+{\bfseries add\+Friend}, 
+{\bfseries rem\+Friend}, 
+{\bfseries post}
+ \}}\label{namespacefb_a1d613b526849fecad2e0906c77654e23}
+
+\begin{DoxyCompactList}\small\item\em enum class for options available to main menu \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 defines main Facebooklet class 
 
-Steve Shea 
+declarations for the prompter and main Facebooklet class.
+
+Steve Shea
+
+Steve Shea
+
+For this project, I have chosen to roughly emulate a model-\/view-\/controller architecture as a way of separating concerns of the various classes. The I\+Facebooklet\+Node, Profile, Database, and Node\+Data classes make up the model by manipulating and storing data. The Prompter class handles user input. It is given instructions from the Facebooklet instance, and provides promts and parses input. Rather than using std\+::cin dirrectly, it takes a std\+::istream object reference. This allows for easier testing, as you can pass in a stringstream object to emulate user input (this can be seen in the test cases of test/engine\+\_\+tests.\+c). Finally, The Facebooklet class acts as the controller. It provides an interface between the model and the user interactions handled by Prompter, such as adding users or posts. It also provides the program's main loop method. 

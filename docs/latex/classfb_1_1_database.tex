@@ -4,10 +4,13 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hypertarget{classfb_1_1_database_a6ea6c4bc9187969306785b351891a876}{\hyperlink{classfb_1_1_database_a6ea6c4bc9187969306785b351891a876}{Database} (\hyperlink{classfb_1_1_database}{Database} const \&db)}\label{classfb_1_1_database_a6ea6c4bc9187969306785b351891a876}
+\hypertarget{classfb_1_1_database_a2de495f81b6f6d7fb5ea886214de85cc}{virtual \hyperlink{classfb_1_1_database_a2de495f81b6f6d7fb5ea886214de85cc}{$\sim$\+Database} ()}\label{classfb_1_1_database_a2de495f81b6f6d7fb5ea886214de85cc}
 
-\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
-\hypertarget{classfb_1_1_database_a08fa4cc0b0746a3af74bc8b475c816fa}{\hyperlink{classfb_1_1_database}{Database} {\bfseries operator=} (\hyperlink{classfb_1_1_database}{Database} const \&db)}\label{classfb_1_1_database_a08fa4cc0b0746a3af74bc8b475c816fa}
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+\hypertarget{classfb_1_1_database_ad1cececc4f2a99deca58128655169131}{{\bfseries Database} (\hyperlink{classfb_1_1_database}{Database} const \&db)=delete}\label{classfb_1_1_database_ad1cececc4f2a99deca58128655169131}
+
+\item 
+\hypertarget{classfb_1_1_database_ac3ef421b9a418f433ea7c2de5b7232e7}{{\bfseries Database} (\hyperlink{classfb_1_1_database}{Database} \&\&db)}\label{classfb_1_1_database_ac3ef421b9a418f433ea7c2de5b7232e7}
 
 \item 
 \hypertarget{classfb_1_1_database_a37037408e2ece4145b6d5487b3fff140}{\hyperlink{structfb_1_1_i_face_booklet_node}{I\+Face\+Booklet\+Node} $\ast$ {\bfseries get\+\_\+node} (id\+\_\+t id)}\label{classfb_1_1_database_a37037408e2ece4145b6d5487b3fff140}
@@ -28,12 +31,15 @@
 \hypertarget{classfb_1_1_database_a94dc36e64c814292188de74e6da46024}{std\+::vector$<$ id\+\_\+t $>$ {\bfseries ids\+\_\+with\+\_\+name} (std\+::string name)}\label{classfb_1_1_database_a94dc36e64c814292188de74e6da46024}
 
 \item 
-\hypertarget{classfb_1_1_database_acd72daebc473b882f1a29a288aa13e69}{\hyperlink{classfb_1_1_profile}{Profile} $\ast$ {\bfseries insert\+\_\+profile} (std\+::string const \&name, time\+\_\+t creation\+\_\+time, \hyperlink{structfb_1_1_date}{Date} const \&birthday=\hyperlink{structfb_1_1_date}{Date}(1, Month\+::\+Jan, 1970))}\label{classfb_1_1_database_acd72daebc473b882f1a29a288aa13e69}
+\hypertarget{classfb_1_1_database_a9c37fa3f59a267b5eb645cf2c661713b}{\hyperlink{classfb_1_1_profile}{Profile} $\ast$ {\bfseries insert\+\_\+profile} (std\+::string const \&name, time\+\_\+t creation\+\_\+time=0, \hyperlink{structfb_1_1_date}{Date} birthday=\hyperlink{structfb_1_1_date}{Date}())}\label{classfb_1_1_database_a9c37fa3f59a267b5eb645cf2c661713b}
+
+\item 
+\hypertarget{classfb_1_1_database_a8bfe54302e8bdb396a1671104f06e3c2}{id\+\_\+t {\bfseries get\+\_\+id\+\_\+count} () const }\label{classfb_1_1_database_a8bfe54302e8bdb396a1671104f06e3c2}
 
 \end{DoxyCompactItemize}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/\hyperlink{_database_8h}{Database.\+h}\item 
-/\+Users/\+Shea/\+Documents/school/cmps/facebooklet/src/Database.\+cc\end{DoxyCompactItemize}
+/\+Users/\+Shea/cmps/facebooklet/src/Database.\+h\item 
+/\+Users/\+Shea/cmps/facebooklet/src/Database.\+cc\end{DoxyCompactItemize}
