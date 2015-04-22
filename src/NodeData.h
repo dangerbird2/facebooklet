@@ -80,6 +80,7 @@ public:
    * posts getter/setter property
    */
   std::vector<NodePost> const &get_posts() const;
+  std::vector<NodePost> &get_posts() {return posts;}
 
   void set_posts(std::vector<NodePost> const &posts);
 

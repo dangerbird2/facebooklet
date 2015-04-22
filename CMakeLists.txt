@@ -6,6 +6,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++11")
 set(SLS_GENERATE_DOCS TRUE
     CACHE BOOL "generate documentation with doxygen")
 
+set(SLS_BUILD_TESTS TRUE
+    CACHE BOOL "build tests using googletest")
 set(FACE_SRC
     src/FaceBooklet.cc
     src/FBProfile.cc
@@ -46,22 +48,29 @@ if (DOXYGEN_FOUND AND SLS_GENERATE_DOCS)
         COMMENT "Generating API documentation with Doxygen")
 endif(DOXYGEN_FOUND AND SLS_GENERATE_DOCS)
 
-add_subdirectory(extern/googlemock)
 
 include_directories(
-    ${CMAKE_SOURCE_DIR}/extern/googlemock/include
-    ${CMAKE_SOURCE_DIR}/extern/gtest/include
+
     ${CMAKE_SOURCE_DIR}/include)
 
 add_library(facebooklet ${FACE_SRC})
 
-add_executable(facebooklet_tests ${FACE_TEST_SRC})
-target_link_libraries(facebooklet_tests
-    facebooklet
-    gtest
-    gtest_main
-    gmock
-    gmock_main)
+if(SLS_BUILD_TESTS)
+    # build googletest & test suite
+    add_subdirectory(extern/googlemock)
+    include_directories(
+        ${CMAKE_SOURCE_DIR}/extern/googlemock/include
+        ${CMAKE_SOURCE_DIR}/extern/gtest/include)
+
+    add_executable(facebooklet_tests ${FACE_TEST_SRC})
+    target_link_libraries(facebooklet_tests
+        facebooklet
+        gtest
+        gtest_main
+        gmock
+        gmock_main)
+endif(SLS_BUILD_TESTS)
+
 
 add_executable(facebooklet_exec ${FACE_EXEC_SRC})
 target_link_libraries(facebooklet_exec

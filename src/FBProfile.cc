@@ -8,10 +8,7 @@ namespace fb {
 using namespace std;
 
 Profile::Profile(Database *db, std::string const &name, time_t time, Date birthday)
-    : db(db), id(0), birthday(birthday), data(NodeData(name, time))
-{
-  ;
-}
+    : db(db), id(0), birthday(birthday), data(NodeData(name, time)) {}
 
 const id_t Profile::get_id() const { return id; }
 

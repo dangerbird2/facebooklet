@@ -40,6 +40,8 @@ public:
 
   Profile *prompt_userid(std::istream &in);
 
+  void make_post(std::istream &in, Profile *active_profile);
+
   size_t prompt_choice(std::istream &in, std::vector<std::string> const &choices);
 
   Database *db;
@@ -92,6 +94,7 @@ private:
   Prompter prompter;
   bool running = true;
 
+  Profile *active_profile;
 };
 
 } // fb

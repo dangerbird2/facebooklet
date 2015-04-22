@@ -1,3 +1,9 @@
+/**
+ * Steve Shea
+ * @file
+ * @brief defines interface type for Facebooklet Nodes
+ */
+
 #ifndef INTERFACES_H
 #define INTERFACES_H
 
@@ -15,6 +21,13 @@ namespace fb {
  * @brief interface class for FaceBooklet nodes
  */
 struct IFaceBookletNode {
+
+  virtual ~IFaceBookletNode() { }
+
+  /**
+   * @brief returns a copy of the node allocated via new()
+   */
+  virtual IFaceBookletNode *heap_copy() = 0;
 
   /**
    * @brief getter for booklet's id tag
@@ -109,26 +122,6 @@ bool operator==(IFaceBookletNode const &self,
 using NodeUptr = std::unique_ptr<IFaceBookletNode>;
 using NodeSptr = std::shared_ptr<IFaceBookletNode>;
 using NodeWptr = std::weak_ptr<IFaceBookletNode>;
-
-/**
- * interface class for database
- */
-struct IDatabase {
-  virtual ~IDatabase() { }
-
-  virtual IFaceBookletNode *get_node(id_t id) = 0;
-
-  virtual IFaceBookletNode *set_node(id_t id, IFaceBookletNode *node) = 0;
-
-  virtual IFaceBookletNode *new_node(IFaceBookletNode *node) = 0;
-
-  virtual bool has_node(id_t id) = 0;
-
-  virtual void remove_node(id_t id) = 0;
-
-  virtual std::vector<id_t> ids_with_name(std::string name) = 0;
-
-};
 
 
 } // fb

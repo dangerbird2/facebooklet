@@ -1,4 +1,5 @@
 #include "face.h"
+#include <time.h>
 
 namespace fb {
 
@@ -8,8 +9,21 @@ using namespace std;
  * FaceBooklet methods
  ----------------------------------------*/
 
-FaceBooklet::FaceBooklet() : db(Database())
+enum class MenuOpt {
+  createProfile,
+  login,
+  delProfile,
+  viewProfile,
+  quit,
+  addFriend,
+  remFriend,
+  post
+};
+
+FaceBooklet::FaceBooklet()
+    :db(Database())
 {
+  active_profile = nullptr;
   prompter = Prompter(&db);
 }
 
@@ -54,15 +68,27 @@ void FaceBooklet::main_menu()
   vector<string> choices = {"create a new profile",
                             "log into a profile",
                             "delete a profile",
+                            "view profile",
                             "quit"};
+  if (active_profile) {
+    vector<string> user_choices = {"add a friend",
+                                   "remove a friend",
+                                   "make a post"};
+    // merge the two vectors
+    choices.insert(choices.end(), user_choices.begin(), user_choices.end());
+  }
+
   auto res = prompter.prompt_choice(cin, choices);
   if (res < choices.size()) {
     cout << "you chose " << choices[res] << "\n";
-    switch (res) {
-      case (3): {
+    switch (static_cast<MenuOpt>(res)) {
+      case (MenuOpt::quit): {
         cout << "goodbye!\n";
         running = false;
         break;
+      }
+      case (MenuOpt::post): {
+        prompter.make_post(cin, active_profile);
       }
       default: {
       }
@@ -165,5 +191,21 @@ size_t Prompter::prompt_choice(std::istream &in,
   return choice;
 }
 
+
+void Prompter::make_post(std::istream &in, Profile *active_profile)
+{
+  if (!active_profile) {return;}
+  string post;
+  cout << active_profile->get_data().get_name() << ", what do you have to say?\n->";
+  in >> post;
+  auto t = time(NULL);
+  auto node_post = NodePost(post, t);
+
+  active_profile->
+      get_data().
+      get_posts().
+      push_back(node_post);
+
+}
 
 } // fb

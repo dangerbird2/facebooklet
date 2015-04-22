@@ -1,7 +1,8 @@
-//
-// Created by Steven on 4/14/15.
-//
-
+/**
+ * Created by Steven on 4/14/15.
+ * @file
+ * @brief utilitiy functions
+ */
 #ifndef FB_UTILS_H
 #define FB_UTILS_H
 
