@@ -142,6 +142,18 @@ const bool Profile::has_friend(IFaceBookletNode *node) const
 }
 
 
+std::vector<id_t> Profile::get_friend_ids() const
+{
+  vector<id_t> fr_list;
+  for (auto const &i: friends) {
+    if (i.second) {
+      fr_list.push_back(i.first);
+    }
+  }
+
+  return fr_list;
+}
+
 IFaceBookletNode *Profile::heap_copy()
 {
   return new Profile(*this);

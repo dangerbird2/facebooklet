@@ -32,21 +32,32 @@ public:
 
   Profile *create_profile(std::istream &in);
 
-  Profile *prompt_username(std::istream &in);
+  IFaceBookletNode * prompt_username(std::istream &in);
 
   NodePost *prompt_post(std::istream &in);
 
-  Profile *prompt_finduser(std::istream &in);
 
-  Profile *prompt_userid(std::istream &in);
+  void make_post(std::istream &in, IFaceBookletNode *active_profile);
 
-  void make_post(std::istream &in, Profile *active_profile);
-
-  size_t prompt_choice(std::istream &in, std::vector<std::string> const &choices);
+  template <typename T>
+  size_t prompt_choice(std::istream &in, std::vector<T> const &choices);
 
   Database *db;
 };
 
+/**
+ * @brief enum class for options
+ * available to main menu
+ */
+enum class MenuOpt {
+  createProfile,
+  login,
+  viewProfile,
+  quit,
+  addFriend,
+  remFriend,
+  post
+};
 
 /**
  * @brief main function for FaceBooklet program.
@@ -74,7 +85,6 @@ public:
   FaceBooklet(FaceBooklet &book) = delete;
   virtual ~FaceBooklet();
 
-  void main_menu();
 
   /**
    * @brief runs the program
@@ -83,8 +93,27 @@ public:
   void run();
 
   bool is_running() const;
-
   void set_running(bool running);
+
+  /*+++++++++++++++++++++++++++
+   * app action controller funtions
+   ----------------------------*/
+  /**
+   * @brief displays and prompts user the main menu
+   */
+  void main_menu();
+
+  void create_profile();
+
+  void login();
+  void del_profile();
+  void view_profile();
+  void quit();
+  void add_friend();
+  void rem_friend();
+  void post();
+
+
 
   Database *get_db();
 
@@ -94,7 +123,7 @@ private:
   Prompter prompter;
   bool running = true;
 
-  Profile *active_profile;
+  IFaceBookletNode *active_profile;
 };
 
 } // fb

@@ -94,4 +94,8 @@ std::vector<id_t> Database::ids_with_name(std::string name)
   return ids;
 }
 
+id_t Database::get_id_count() const
+{
+  return id_count;
+}
 }

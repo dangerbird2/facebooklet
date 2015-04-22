@@ -108,6 +108,9 @@ public:
    */
   const bool has_friend(IFaceBookletNode *node) const;
 
+  virtual std::vector<id_t> get_friend_ids() const;
+
+
 private:
   /**
    * object id
@@ -128,7 +131,6 @@ private:
    * whether or not they are friends
    */
   std::map<id_t, bool> friends;
-
 };
 
 } // fb

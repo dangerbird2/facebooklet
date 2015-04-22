@@ -106,11 +106,14 @@ struct IFaceBookletNode {
 
   virtual void remove_friend(id_t id) = 0;
 
+  virtual std::vector<id_t> get_friend_ids() const = 0;
+
   friend std::ostream &operator<<(std::ostream &os,
                                   const IFaceBookletNode &node);
 
   friend bool operator==(IFaceBookletNode const &self,
                          IFaceBookletNode const &rhs);
+
 };
 
 bool operator==(IFaceBookletNode const &self,

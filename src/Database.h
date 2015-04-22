@@ -49,6 +49,8 @@ public:
 
   Profile *insert_profile(std::string const &name, time_t creation_time = 0, Date birthday = Date());
 
+  id_t get_id_count() const;
+
 private:
   std::map<id_t, NodeUptr> nodes;
   id_t id_count;
